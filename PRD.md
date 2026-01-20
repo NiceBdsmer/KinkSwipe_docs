@@ -28,8 +28,8 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [x] Create Vite project with React and TypeScript using pnpm create vite@latest kinkswipe --template react-ts
 - [x] Install dependencies: pnpm add zustand tailwindcss postcss autoprefixer framer-motion react-tinder-card lz-string html2canvas
 - [x] Initialize Tailwind CSS with pnpm dlx tailwindcss init -p and configure tailwind.config.js for dark mode class strategy
-- [ ] Install shadcn/ui with pnpm dlx shadcn@latest init, select dark theme, slate color, and src/components/ui path
-- [ ] Add shadcn components: button, card, dialog, accordion, tooltip, progress, select, checkbox
+- [x] Install shadcn/ui with pnpm dlx shadcn@latest init, select dark theme, slate color, and src/components/ui path
+- [x] Add shadcn components: button, card, dialog, accordion, tooltip, progress, select, checkbox
 - [ ] Create folder structure: src/components, src/screens, src/store, src/data, src/utils, src/i18n, src/types
 - [ ] Create src/types/index.ts with TypeScript types: RatingValue, UserMode, ExperienceLevel, UserState, ActivityDef, CategoryDef, CustomCategory
 - [ ] Configure Vercel deployment by creating vercel.json with rewrites for SPA routing
