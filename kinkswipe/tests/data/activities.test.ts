@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { activitiesEn } from '../../src/data/activities-en';
+import { activitiesEs } from '../../src/data/activities-es';
 import { categories } from '../../src/data/categories';
 
 describe('Activities Data', () => {
@@ -47,6 +48,27 @@ describe('Activities Data', () => {
          // Some might not be marked edge explicitely in the data generator above if I missed it, 
          // but let's check one that definitely is.
       }
+    });
+  });
+
+  describe('Spanish Translations', () => {
+    it('should have the same number of activities as English', () => {
+      expect(activitiesEs.length).toBe(activitiesEn.length);
+    });
+
+    it('should have Spanish text for all activities', () => {
+      activitiesEs.forEach(activity => {
+        expect(activity.texts.es).toBeDefined();
+        expect(activity.texts.es?.text).toBeTruthy();
+        expect(activity.texts.es?.desc).toBeTruthy();
+      });
+    });
+
+    it('should match IDs with English activities', () => {
+        const enIds = new Set(activitiesEn.map(a => a.id));
+        activitiesEs.forEach(activity => {
+            expect(enIds.has(activity.id)).toBe(true);
+        });
     });
   });
 });

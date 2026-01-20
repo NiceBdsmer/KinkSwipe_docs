@@ -37,7 +37,7 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 ### Phase 1: Data Layer
 - [x] Create src/data/categories.ts with CategoryDef array containing 8 categories: bondage, impact, sensory, power-exchange, edge, sexual, fetishes, humiliation
 - [x] Create src/data/activities-en.ts with 150+ ActivityDef objects covering all categories, each with id, categoryId, edge flag, and texts.en with text and desc
-- [ ] Create src/data/activities-es.ts with Spanish translations for all activities
+- [x] Create src/data/activities-es.ts with Spanish translations for all activities
 - [ ] Create src/data/activities-th.ts with Thai translations for all activities
 - [ ] Create src/store/useAppStore.ts with Zustand store containing: lang, userMeta, ratings (give/receive), customCategories, currentScreen, currentCategory, currentActivityIndex
 - [ ] Add Zustand persist middleware to save state to localStorage with key kinkswipe-state
