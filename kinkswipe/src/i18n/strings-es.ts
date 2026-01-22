@@ -98,5 +98,9 @@ export const stringsEs: Strings = {
     swipeDown: 'No seguro',
     swipeLeft: 'No interesado',
     dismissHint: 'Desliza cualquier tarjeta para comenzar'
+  },
+  footer: {
+    home: 'Inicio',
+    resetAll: 'Reiniciar Todo'
   }
 };

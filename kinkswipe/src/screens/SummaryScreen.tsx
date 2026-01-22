@@ -139,7 +139,7 @@ export function SummaryScreen() {
   }, [currentRatings]);
 
   return (
-    <div ref={summaryRef} className="min-h-screen bg-background flex flex-col items-center p-4">
+    <div ref={summaryRef} className="min-h-screen bg-background flex flex-col items-center p-4 pb-20">
       {/* Back Button */}
       <div className="w-full max-w-2xl mb-4">
         <Button

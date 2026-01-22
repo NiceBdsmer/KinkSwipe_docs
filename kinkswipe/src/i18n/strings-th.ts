@@ -98,5 +98,9 @@ export const stringsTh: Strings = {
     swipeDown: 'ไม่แน่ใจ',
     swipeLeft: 'ไม่สนใจ',
     dismissHint: 'เลื่อนการ์ดใดก็ได้เพื่อเริ่ม'
+  },
+  footer: {
+    home: 'หน้าแรก',
+    resetAll: 'รีเซ็ตทั้งหมด'
   }
 };

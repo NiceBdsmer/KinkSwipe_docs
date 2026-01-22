@@ -96,6 +96,10 @@ export const stringsEn = {
     swipeDown: 'Not sure',
     swipeLeft: 'Not interested',
     dismissHint: 'Swipe any card to start'
+  },
+  footer: {
+    home: 'Home',
+    resetAll: 'Reset All'
   }
 };
 

@@ -70,7 +70,7 @@ export function LoadFromLink() {
 
   if (loadState === 'loaded' && loadedData) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background pb-20">
         <div className="container mx-auto p-4">
           <Card className="mb-6">
             <CardHeader>
@@ -99,7 +99,7 @@ export function LoadFromLink() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 pb-20">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-4">
           <h1 className="text-3xl font-bold">Load Results</h1>

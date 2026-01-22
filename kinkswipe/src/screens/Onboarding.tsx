@@ -60,7 +60,7 @@ export function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col safe-area-inset">
+    <div className="min-h-screen bg-background flex flex-col safe-area-inset pb-20">
       <div className="flex-1 flex flex-col items-center justify-center p-3 sm:p-4 w-full">
         <div className="w-full max-w-lg sm:max-w-md">
           <div className="mb-8">
