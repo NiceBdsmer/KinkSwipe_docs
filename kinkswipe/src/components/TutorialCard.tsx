@@ -17,15 +17,15 @@ export function TutorialCard({ onSwipe }: TutorialCardProps) {
       key="tutorial"
       className="absolute inset-0 w-full h-full"
       swipeRequirementType="position"
-      swipeThreshold={100}
+      swipeThreshold={50}
       preventSwipe={[]}
       onSwipeRequirementFulfilled={(direction) => setActiveDirection(direction)}
       onSwipeRequirementUnfulfilled={() => setActiveDirection(null)}
-      onCardLeftScreen={() => setActiveDirection(null)}
-      onSwipe={(direction) => {
+      onCardLeftScreen={(direction) => {
         setActiveDirection(null);
         onSwipe(direction);
       }}
+      onSwipe={() => {}} // Disable this callback, use onCardLeftScreen instead
     >
       <Card className="absolute inset-0 shadow-xl">
         <CardHeader>
@@ -64,7 +64,7 @@ export function TutorialCard({ onSwipe }: TutorialCardProps) {
               <div className="relative w-16 h-16 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-full">
                 <ArrowDownCircle className={`w-10 h-10 text-gray-600 dark:text-gray-400 ${activeDirection === 'down' ? 'animate-pulse' : ''}`} />
               </div>
-              <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">{t.swipe.meh}</span>
+               <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">{t.swipe.skip}</span>
               <span className="text-xs text-muted-foreground">{t.tutorial.swipeDown}</span>
             </div>
 

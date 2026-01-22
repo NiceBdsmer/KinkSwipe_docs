@@ -25,18 +25,18 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
       key={activity.id}
       className="absolute inset-0 w-full h-full"
       swipeRequirementType="position"
-      swipeThreshold={100}
+      swipeThreshold={50}
       preventSwipe={[]}
       onSwipeRequirementFulfilled={(direction) => setActiveDirection(direction)}
       onSwipeRequirementUnfulfilled={() => setActiveDirection(null)}
-      onCardLeftScreen={() => setActiveDirection(null)}
-      onSwipe={(direction) => {
+      onCardLeftScreen={(direction) => {
         setActiveDirection(null);
         if (direction === 'up') onSwipe('up');
         else if (direction === 'right') onSwipe('right');
         else if (direction === 'down') onSwipe('down');
         else onSwipe('left');
       }}
+      onSwipe={() => {}} // Disable this callback, use onCardLeftScreen instead
     >
       <Card className="absolute inset-0 shadow-xl">
         <CardHeader>
@@ -83,7 +83,7 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
       <div 
         className={`absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 -rotate-12deg text-gray-600 text-4xl font-black pointer-events-none transition-opacity ${activeDirection === 'down' ? 'opacity-100' : 'opacity-0'}`}
       >
-        {t.swipe.meh}
+        {t.swipe.skip}
       </div>
       <div 
         className={`absolute top-1/4 right-1/4 translate-x-1/2 -translate-y-1/2 rotate-[12deg] text-blue-600 text-4xl font-black pointer-events-none transition-opacity ${activeDirection === 'up' ? 'opacity-100' : 'opacity-0'}`}

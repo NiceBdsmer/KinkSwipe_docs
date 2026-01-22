@@ -20,7 +20,7 @@ export function SwipeScreen() {
   const [showRoundComplete, setShowRoundComplete] = useState(false);
 
   const currentMode: 'give' | 'receive' = userMeta.mode === 'both' ? 'give' : userMeta.mode;
-  const showTutorial = !tutorialSeen && currentActivityIndex === 0 && currentCategory === categories[0].id;
+  const showTutorial = !tutorialSeen;
 
   const activities = getActivities(lang);
   const categoryActivities = activities.filter(a => a.categoryId === currentCategory);
@@ -41,7 +41,7 @@ export function SwipeScreen() {
     switch (direction) {
       case 'right': return 'yes';
       case 'up': return 'maybe';
-      case 'down': return 'meh';
+      case 'down': return 'skip';
       case 'left': return 'no';
     }
   };
@@ -126,7 +126,7 @@ export function SwipeScreen() {
             </div>
         
         <div className="flex-1 relative min-h-[300px] sm:min-h-[400px]">
-          {showTutorial && !currentActivity ? (
+          {showTutorial ? (
             <TutorialCard
               onSwipe={handleTutorialSwipe}
             />
@@ -137,21 +137,25 @@ export function SwipeScreen() {
             />
           ) : null}
         </div>
-        
-        <ActionButtons
-          onNope={() => handleSwipe('left')}
-          onMeh={() => handleSwipe('down')}
-          onMaybe={() => handleSwipe('up')}
-          onYes={() => handleSwipe('right')}
-        />
-        
-        <Button
-          variant="ghost"
-          className="mt-2 text-sm"
-          onClick={handleSkipCategory}
-        >
-          {t.swipe.skipCategory}
-        </Button>
+
+        {!showTutorial && (
+          <>
+            <ActionButtons
+              onNope={() => handleSwipe('left')}
+              onSkip={() => handleSwipe('down')}
+              onMaybe={() => handleSwipe('up')}
+              onYes={() => handleSwipe('right')}
+            />
+
+            <Button
+              variant="ghost"
+              className="mt-2 text-sm"
+              onClick={handleSkipCategory}
+            >
+              {t.swipe.skipCategory}
+            </Button>
+          </>
+        )}
       </div>
       
       <Dialog open={showRoundComplete} onOpenChange={setShowRoundComplete}>

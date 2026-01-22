@@ -1,4 +1,4 @@
-export type RatingValue = 'yes' | 'maybe' | 'meh' | 'no';
+export type RatingValue = 'yes' | 'maybe' | 'skip' | 'no';
 
 export type UserMode = 'give' | 'receive' | 'both';
 

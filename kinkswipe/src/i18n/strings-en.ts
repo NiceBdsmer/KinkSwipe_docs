@@ -24,8 +24,8 @@ export const stringsEn = {
   swipe: {
     yes: 'YES',
     maybe: 'MAYBE',
-    meh: 'MEH',
-    nope: 'NOPE',
+    skip: 'SKIP',
+    nope: 'NO',
     skipCategory: 'Skip Category',
     roundComplete: {
       title: 'Round Complete!',
@@ -38,7 +38,7 @@ export const stringsEn = {
     title: 'Your Results',
     yesCount: 'You said YES to',
     maybeCount: 'MAYBE to',
-    mehCount: 'MEH to',
+    skipCount: 'SKIP to',
     nopeCount: 'NOPE to',
     copyLink: 'Copy Link',
     copyText: 'Copy Text',

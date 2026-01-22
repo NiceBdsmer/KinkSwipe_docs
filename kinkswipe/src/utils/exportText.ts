@@ -31,7 +31,7 @@ export function exportText(ratings: Record<RatingMode, Record<string, RatingValu
       const groupedByRating: Record<RatingValue, typeof ratedActivities> = {
         yes: [],
         maybe: [],
-        meh: [],
+        skip: [],
         no: []
       };
 
@@ -40,7 +40,7 @@ export function exportText(ratings: Record<RatingMode, Record<string, RatingValu
         groupedByRating[rating].push(activity);
       });
 
-      (['yes', 'maybe', 'meh', 'no'] as RatingValue[]).forEach(rating => {
+      (['yes', 'maybe', 'skip', 'no'] as RatingValue[]).forEach(rating => {
         const activities = groupedByRating[rating];
         if (activities.length > 0) {
           lines.push(`  ${rating.toUpperCase()}: ${activities.map(a => a.texts.en.text).join(', ')}`);

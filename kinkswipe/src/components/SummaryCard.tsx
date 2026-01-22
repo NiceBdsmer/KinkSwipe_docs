@@ -4,11 +4,11 @@ import { useTranslation } from '../i18n/useTranslation';
 interface SummaryCardProps {
   yesCount: number;
   maybeCount: number;
-  mehCount: number;
+  skipCount: number;
   nopeCount: number;
 }
 
-export function SummaryCard({ yesCount, maybeCount, mehCount, nopeCount }: SummaryCardProps) {
+export function SummaryCard({ yesCount, maybeCount, skipCount, nopeCount }: SummaryCardProps) {
   const t = useTranslation();
 
   return (
@@ -30,12 +30,12 @@ export function SummaryCard({ yesCount, maybeCount, mehCount, nopeCount }: Summa
               {maybeCount}
             </span>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">{t.summary.mehCount}</span>
-            <span className="px-3 py-1 rounded-full bg-gray-600 text-white text-sm font-semibold">
-              {mehCount}
-            </span>
-          </div>
+           <div className="flex items-center justify-between">
+             <span className="text-sm font-medium">{t.summary.skipCount}</span>
+             <span className="px-3 py-1 rounded-full bg-gray-600 text-white text-sm font-semibold">
+               {skipCount}
+             </span>
+           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium">{t.summary.nopeCount}</span>
             <span className="px-3 py-1 rounded-full bg-red-600 text-white text-sm font-semibold">

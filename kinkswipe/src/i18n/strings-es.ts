@@ -26,7 +26,7 @@ export const stringsEs: Strings = {
   swipe: {
     yes: 'SÍ',
     maybe: 'TAL VEZ',
-    meh: 'MEH',
+    skip: 'SALTAR',
     nope: 'NO',
     skipCategory: 'Saltar Categoría',
     roundComplete: {
@@ -40,7 +40,7 @@ export const stringsEs: Strings = {
     title: 'Tus Resultados',
     yesCount: 'Diste SÍ a',
     maybeCount: 'TAL VEZ a',
-    mehCount: 'MEH a',
+    skipCount: 'SALTAR a',
     nopeCount: 'NO a',
     copyLink: 'Copiar Enlace',
     copyText: 'Copiar Texto',

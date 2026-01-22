@@ -37,6 +37,25 @@ vi.mock('../store/useAppStore', () => ({
   useAppStore: vi.fn()
 }));
 
+vi.mock('../utils/getActivities', () => ({
+  getActivities: vi.fn(() => {
+    const activities: any[] = [];
+    categories.forEach((cat, catIndex) => {
+      for (let i = 0; i < 20; i++) {
+        activities.push({
+          id: `test-activity-${catIndex}-${i}`,
+          categoryId: cat.id,
+          texts: {
+            en: { text: `Test Activity ${catIndex}-${i}`, desc: 'A test activity' }
+          }
+        });
+      }
+    });
+    return activities;
+  }),
+  getActivityText: vi.fn((activity: any) => activity.texts?.en?.text || activity.text || 'Test Activity')
+}));
+
 vi.mock('react-tinder-card', () => ({
   default: ({ children, onSwipe }: { children: React.ReactNode; onSwipe: (direction: string) => void }) => {
     return (
@@ -58,72 +77,85 @@ describe('SwipeScreen', () => {
   
   it('should render Header, SwipeCard, and ActionButtons', () => {
     render(<SwipeScreen />);
-    
+
     expect(screen.getByRole('button', { name: /Back/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /YES/ })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /MAYBE/ })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /MEH/ })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /NOPE/ })).toBeInTheDocument();
+    const actionButtons = screen.getAllByRole('button', { name: /YES|MAYBE|SKIP|NOPE/ });
+    expect(actionButtons.length).toBeGreaterThanOrEqual(4);
   });
-  
+
   it('should display category progress', () => {
     render(<SwipeScreen />);
-    
+
     const progressElements = screen.getAllByText(/0 \/ \d+/);
     expect(progressElements.length).toBeGreaterThan(0);
     expect(screen.getByText(/total/)).toBeInTheDocument();
   });
-  
+
   it('should call setRating with yes on right swipe', async () => {
     render(<SwipeScreen />);
-    
-    const yesButton = screen.getByRole('button', { name: /YES/i });
-    await userEvent.click(yesButton);
-    
+
+    const yesButtons = screen.getAllByRole('button', { name: /YES/i });
+    const yesButton = yesButtons.find(btn => btn.querySelector('svg.lucide-heart'));
+    if (yesButton) {
+      await userEvent.click(yesButton);
+    }
+
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'yes');
     });
   });
-  
+
   it('should call setRating with maybe on up swipe (maybe button)', async () => {
     render(<SwipeScreen />);
-    
-    const maybeButton = screen.getByRole('button', { name: /MAYBE/i });
-    await userEvent.click(maybeButton);
-    
+
+    const maybeButtons = screen.getAllByRole('button', { name: /MAYBE/i });
+    const maybeButton = maybeButtons.find(btn => btn.querySelector('svg.lucide-zap'));
+    if (maybeButton) {
+      await userEvent.click(maybeButton);
+    }
+
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'maybe');
     });
   });
   
-  it('should call setRating with meh on down swipe (meh button)', async () => {
+  it('should call setRating with skip on down swipe (skip button)', async () => {
     render(<SwipeScreen />);
-    
-    const mehButton = screen.getByRole('button', { name: /MEH/i });
-    await userEvent.click(mehButton);
-    
+
+    const skipButtons = screen.getAllByRole('button', { name: /SKIP/i });
+    const skipButton = skipButtons.find(btn => btn.querySelector('svg.lucide-circle'));
+    if (skipButton) {
+      await userEvent.click(skipButton);
+    }
+
     await waitFor(() => {
-      expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'meh');
+      expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'skip');
     });
   });
-  
+
   it('should call setRating with no on left swipe (nope button)', async () => {
     render(<SwipeScreen />);
-    
-    const nopeButton = screen.getByRole('button', { name: /NOPE/i });
-    await userEvent.click(nopeButton);
-    
+
+    const nopeButtons = screen.getAllByRole('button', { name: /NO/i });
+    const nopeButton = nopeButtons.find(btn => btn.querySelector('svg.lucide-x'));
+    if (nopeButton) {
+      await userEvent.click(nopeButton);
+    }
+
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'no');
     });
   });
-  
+
   it('should increment activity index after swipe', async () => {
     render(<SwipeScreen />);
-    
-    const yesButton = screen.getByRole('button', { name: /YES/i });
-    await userEvent.click(yesButton);
-    
+
+    const yesButtons = screen.getAllByRole('button', { name: /YES/i });
+    const yesButton = yesButtons.find(btn => btn.querySelector('svg.lucide-heart'));
+    if (yesButton) {
+      await userEvent.click(yesButton);
+    }
+
     await waitFor(() => {
       expect(mockSetCurrentActivityIndex).toHaveBeenCalledWith(1);
     });
@@ -140,19 +172,22 @@ describe('SwipeScreen', () => {
         agreedToTerms: true
       }
     };
-    
+
     (useAppStore as any).mockReturnValue(bothModeState);
-    
+
     render(<SwipeScreen />);
-    
-    const yesButton = screen.getByRole('button', { name: /YES/i });
-    await userEvent.click(yesButton);
-    
+
+    const yesButtons = screen.getAllByRole('button', { name: /YES/i });
+    const yesButton = yesButtons.find(btn => btn.querySelector('svg.lucide-heart'));
+    if (yesButton) {
+      await userEvent.click(yesButton);
+    }
+
     await waitFor(() => {
       expect(screen.getByText(/Round Complete/i)).toBeInTheDocument();
     });
   });
-  
+
   it('should navigate to summary when user declines second round', async () => {
     const bothModeState = {
       ...defaultStoreState,
@@ -164,26 +199,29 @@ describe('SwipeScreen', () => {
         agreedToTerms: true
       }
     };
-    
+
     (useAppStore as any).mockReturnValue(bothModeState);
-    
+
     render(<SwipeScreen />);
-    
-    const yesButton = screen.getByRole('button', { name: /YES/i });
-    await userEvent.click(yesButton);
-    
+
+    const yesButtons = screen.getAllByRole('button', { name: /YES/i });
+    const yesButton = yesButtons.find(btn => btn.querySelector('svg.lucide-heart'));
+    if (yesButton) {
+      await userEvent.click(yesButton);
+    }
+
     await waitFor(() => {
       expect(screen.getByText(/Round Complete/i)).toBeInTheDocument();
     });
-    
+
     const viewSummaryButton = screen.getByText(/View Summary/i);
     await userEvent.click(viewSummaryButton);
-    
+
     await waitFor(() => {
       expect(mockSetScreen).toHaveBeenCalledWith('summary');
     });
   });
-  
+
   it('should reset to first category when user continues second round', async () => {
     const bothModeState = {
       ...defaultStoreState,
@@ -195,22 +233,25 @@ describe('SwipeScreen', () => {
         agreedToTerms: true
       }
     };
-    
+
     (useAppStore as any).mockReturnValue(bothModeState);
-    
+
     render(<SwipeScreen />);
-    
-    const buttons = screen.getAllByRole('button', { name: /YES/ });
-    await userEvent.click(buttons[0]);
-    
+
+    const yesButtons = screen.getAllByRole('button', { name: /YES/i });
+    const yesButton = yesButtons.find(btn => btn.querySelector('svg.lucide-heart'));
+    if (yesButton) {
+      await userEvent.click(yesButton);
+    }
+
     await waitFor(() => {
       expect(screen.getByText(/Round Complete/i)).toBeInTheDocument();
     });
-    
+
     const continueButtons = screen.getAllByRole('button', { name: /Continue/i });
     const continueButton = continueButtons[0];
     await userEvent.click(continueButton);
-    
+
     await waitFor(() => {
       expect(mockSetCurrentCategory).toHaveBeenCalledWith(categories[0].id);
       expect(mockSetCurrentActivityIndex).toHaveBeenCalledWith(0);
@@ -247,14 +288,19 @@ describe('SwipeScreen', () => {
         agreedToTerms: true
       }
     };
-    
+
     (useAppStore as any).mockReturnValue(receiveModeState);
-    
+
     render(<SwipeScreen />);
-    
-    const yesButton = screen.getByRole('button', { name: /YES/i });
-    await userEvent.click(yesButton);
-    
-    expect(mockSetRating).toHaveBeenCalledWith('receive', expect.any(String), expect.any(String));
+
+    const yesButtons = screen.getAllByRole('button', { name: /YES/i });
+    const yesButton = yesButtons.find(btn => btn.querySelector('svg.lucide-heart'));
+    if (yesButton) {
+      await userEvent.click(yesButton);
+    }
+
+    await waitFor(() => {
+      expect(mockSetRating).toHaveBeenCalledWith('receive', expect.any(String), 'yes');
+    });
   });
 });

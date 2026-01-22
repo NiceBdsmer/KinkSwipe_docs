@@ -90,18 +90,18 @@ export function SummaryScreen() {
   const stats = useMemo(() => {
     let yes = 0;
     let maybe = 0;
-    let meh = 0;
+    let skip = 0;
     let nope = 0;
 
     activitiesEn.forEach((activity) => {
       const rating = currentRatings[activity.id];
       if (rating === 'yes') yes++;
       else if (rating === 'maybe') maybe++;
-      else if (rating === 'meh') meh++;
+      else if (rating === 'skip') skip++;
       else if (rating === 'no') nope++;
     });
 
-    return { yes, maybe, meh, nope };
+    return { yes, maybe, skip, nope };
   }, [currentRatings]);
 
   const categoryActivities = useMemo(() => {
@@ -116,8 +116,8 @@ export function SummaryScreen() {
       const maybeActivities = categoryActivitiesEn.filter(
         (activity) => currentRatings[activity.id] === 'maybe'
       );
-      const mehActivities = categoryActivitiesEn.filter(
-        (activity) => currentRatings[activity.id] === 'meh'
+      const skipActivities = categoryActivitiesEn.filter(
+        (activity) => currentRatings[activity.id] === 'skip'
       );
       const nopeActivities = categoryActivitiesEn.filter(
         (activity) => currentRatings[activity.id] === 'no'
@@ -127,7 +127,7 @@ export function SummaryScreen() {
         category,
         yesActivities,
         maybeActivities,
-        mehActivities,
+        skipActivities,
         nopeActivities
       };
     });
@@ -173,12 +173,12 @@ export function SummaryScreen() {
         <SummaryCard
           yesCount={stats.yes}
           maybeCount={stats.maybe}
-          mehCount={stats.meh}
+          skipCount={stats.skip}
           nopeCount={stats.nope}
         />
 
         <Accordion type="multiple" className="w-full">
-          {categoryActivities.map(({ category, yesActivities, maybeActivities, mehActivities, nopeActivities }) => (
+          {categoryActivities.map(({ category, yesActivities, maybeActivities, skipActivities, nopeActivities }) => (
             <AccordionItem key={category.id} value={category.id}>
               <AccordionTrigger className="capitalize">
                 {t.categories[category.id as keyof typeof t.categories]}
@@ -223,18 +223,18 @@ export function SummaryScreen() {
                       </ul>
                     </div>
                   )}
-                  {mehActivities.length > 0 && (
+                  {skipActivities.length > 0 && (
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <span className="px-2 py-0.5 rounded-full bg-gray-600 text-white text-xs font-semibold">
-                          MEH
+                          SKIP
                         </span>
                         <span className="text-sm text-muted-foreground">
-                          {mehActivities.length} {mehActivities.length === 1 ? 'activity' : 'activities'}
+                          {skipActivities.length} {skipActivities.length === 1 ? 'activity' : 'activities'}
                         </span>
                       </div>
                       <ul className="text-sm space-y-1 pl-4">
-                        {mehActivities.map((activity) => (
+                        {skipActivities.map((activity) => (
                           <li key={activity.id} className="text-foreground">
                             {activity.texts.en.text}
                           </li>
@@ -263,7 +263,7 @@ export function SummaryScreen() {
                   )}
                   {yesActivities.length === 0 &&
                    maybeActivities.length === 0 &&
-                   mehActivities.length === 0 &&
+                   skipActivities.length === 0 &&
                    nopeActivities.length === 0 && (
                     <p className="text-sm text-muted-foreground">No activities rated in this category.</p>
                   )}

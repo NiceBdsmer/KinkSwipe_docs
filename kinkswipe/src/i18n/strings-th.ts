@@ -26,7 +26,7 @@ export const stringsTh: Strings = {
   swipe: {
     yes: 'ชอบ',
     maybe: 'อาจจะ',
-    meh: 'เฉยๆ',
+    skip: 'ข้าม',
     nope: 'ไม่ชอบ',
     skipCategory: 'ข้ามหมวดหมู่',
     roundComplete: {
@@ -40,7 +40,7 @@ export const stringsTh: Strings = {
     title: 'ผลลัพธ์ของคุณ',
     yesCount: 'คุณบอกชอบกับ',
     maybeCount: 'อาจจะกับ',
-    mehCount: 'เฉยๆกับ',
+    skipCount: 'ข้ามกับ',
     nopeCount: 'ไม่ชอบกับ',
     copyLink: 'คัดลอกลิงก์',
     copyText: 'คัดลอกข้อความ',
