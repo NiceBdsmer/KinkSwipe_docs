@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Checkbox } from '../components/ui/checkbox';
+import { FooterControls } from '../components/FooterControls';
 import { useAppStore } from '../store/useAppStore';
 import { useTranslation } from '../i18n/useTranslation';
 import { ChevronRight } from 'lucide-react';
@@ -168,6 +169,11 @@ export function Onboarding() {
             {t.onboarding.continue}
             <ChevronRight className="w-4 h-4 ml-1" />
           </Button>
+        </div>
+        
+        {/* Footer with Controls */}
+        <div className="mt-6">
+          <FooterControls />
         </div>
       </div>
     </div>

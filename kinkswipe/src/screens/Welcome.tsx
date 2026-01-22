@@ -1,5 +1,5 @@
 import { Button } from '../components/ui/button';
-import { LanguageSwitcher } from '../components/LanguageSwitcher';
+import { FooterControls } from '../components/FooterControls';
 import { useAppStore } from '../store/useAppStore';
 import { useTranslation } from '../i18n/useTranslation';
 
@@ -45,9 +45,9 @@ export function Welcome() {
           </Button>
         </div>
 
-        {/* Footer with Language Switcher */}
+        {/* Footer with Controls */}
         <div className="mt-8">
-          <LanguageSwitcher />
+          <FooterControls />
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Progress } from '../components/ui/progress';
+import { FooterControls } from '../components/FooterControls';
 import { useAppStore } from '../store/useAppStore';
 import { useTranslation } from '../i18n/useTranslation';
 import { categories } from '../data/categories';
@@ -165,13 +166,16 @@ export function CategorySelection() {
           })}
         </div>
 
-        <div className="flex justify-center mt-8">
+        <div className="flex flex-col items-center gap-4 mt-8">
           <Button
             variant="outline"
             onClick={() => setScreen('welcome')}
           >
             {t.categorySelection?.back || 'Back to Menu'}
           </Button>
+          
+          {/* Footer with Controls */}
+          <FooterControls />
         </div>
       </div>
     </div>
