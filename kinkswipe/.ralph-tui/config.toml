@@ -1,0 +1,14 @@
+# Ralph TUI Configuration
+# KinkSwipe Project Configuration
+# See: ralph-tui config help
+
+configVersion = "2.1"
+tracker = "json"
+agent = "opencode"
+maxIterations = 0
+autoCommit = true
+
+[trackerOptions]
+prdPath = "../tasks/sprint-prd.json"
+
+[agentOptions]
