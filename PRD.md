@@ -83,8 +83,8 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [x] When all categories complete (or user declines second round), navigate to SummaryScreen
 - [x] Write unit tests for SwipeScreen.tsx component
 - [x] Write unit tests for swipe handler logic (direction to rating mapping)
-- [ ] Write E2E tests for complete swipe flow (all activities → category change → summary)
-- [ ] Run tests and lint, then merge to master
+- [x] Write E2E tests for complete swipe flow (all activities → category change → summary)
+- [x] Run tests and lint, then merge to master
 
 ### Phase 6: Summary Screen
 - [ ] Create src/screens/SummaryScreen.tsx with global stats panel and category accordion
