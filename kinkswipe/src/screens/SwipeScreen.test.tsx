@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { SwipeScreen } from './SwipeScreen';
 import { useAppStore } from '../store/useAppStore';
@@ -77,7 +78,7 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const yesButton = screen.getByRole('button', { name: /YES/i });
-    fireEvent.click(yesButton);
+    await userEvent.click(yesButton);
     
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'yes');
@@ -88,7 +89,7 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const maybeButton = screen.getByRole('button', { name: /MAYBE/i });
-    fireEvent.click(maybeButton);
+    await userEvent.click(maybeButton);
     
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'maybe');
@@ -99,7 +100,7 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const mehButton = screen.getByRole('button', { name: /MEH/i });
-    fireEvent.click(mehButton);
+    await userEvent.click(mehButton);
     
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'meh');
@@ -110,7 +111,7 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const nopeButton = screen.getByRole('button', { name: /NOPE/i });
-    fireEvent.click(nopeButton);
+    await userEvent.click(nopeButton);
     
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'no');
@@ -121,7 +122,7 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const yesButton = screen.getByRole('button', { name: /YES/i });
-    fireEvent.click(yesButton);
+    await userEvent.click(yesButton);
     
     await waitFor(() => {
       expect(mockSetCurrentActivityIndex).toHaveBeenCalledWith(1);
@@ -145,7 +146,7 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const yesButton = screen.getByRole('button', { name: /YES/i });
-    fireEvent.click(yesButton);
+    await userEvent.click(yesButton);
     
     await waitFor(() => {
       expect(screen.getByText(/Round Complete/i)).toBeInTheDocument();
@@ -169,14 +170,14 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const yesButton = screen.getByRole('button', { name: /YES/i });
-    fireEvent.click(yesButton);
+    await userEvent.click(yesButton);
     
     await waitFor(() => {
       expect(screen.getByText(/Round Complete/i)).toBeInTheDocument();
     });
     
     const viewSummaryButton = screen.getByText(/View Summary/i);
-    fireEvent.click(viewSummaryButton);
+    await userEvent.click(viewSummaryButton);
     
     await waitFor(() => {
       expect(mockSetScreen).toHaveBeenCalledWith('summary');
@@ -200,7 +201,7 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const buttons = screen.getAllByRole('button', { name: /YES/ });
-    fireEvent.click(buttons[0]);
+    await userEvent.click(buttons[0]);
     
     await waitFor(() => {
       expect(screen.getByText(/Round Complete/i)).toBeInTheDocument();
@@ -208,7 +209,7 @@ describe('SwipeScreen', () => {
     
     const continueButtons = screen.getAllByRole('button', { name: /Continue/i });
     const continueButton = continueButtons[0];
-    fireEvent.click(continueButton);
+    await userEvent.click(continueButton);
     
     await waitFor(() => {
       expect(mockSetCurrentCategory).toHaveBeenCalledWith(categories[0].id);
@@ -220,7 +221,7 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const skipButton = screen.getByText(/Skip Category/i);
-    fireEvent.click(skipButton);
+    await userEvent.click(skipButton);
     
     await waitFor(() => {
       expect(mockSetCurrentCategory).toHaveBeenCalledWith(categories[1].id);
@@ -228,16 +229,16 @@ describe('SwipeScreen', () => {
     });
   });
   
-  it('should navigate to welcome when back button is clicked', () => {
+  it('should navigate to welcome when back button is clicked', async () => {
     render(<SwipeScreen />);
     
     const backButton = screen.getByRole('button', { name: /Back/i });
-    fireEvent.click(backButton);
+    await userEvent.click(backButton);
     
     expect(mockSetScreen).toHaveBeenCalledWith('welcome');
   });
   
-  it('should handle receive mode when userMeta mode is receive', () => {
+  it('should handle receive mode when userMeta mode is receive', async () => {
     const receiveModeState = {
       ...defaultStoreState,
       userMeta: {
@@ -252,7 +253,7 @@ describe('SwipeScreen', () => {
     render(<SwipeScreen />);
     
     const yesButton = screen.getByRole('button', { name: /YES/i });
-    fireEvent.click(yesButton);
+    await userEvent.click(yesButton);
     
     expect(mockSetRating).toHaveBeenCalledWith('receive', expect.any(String), expect.any(String));
   });
