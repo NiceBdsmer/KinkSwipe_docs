@@ -19,7 +19,7 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - Mobile-first (swipe optimizado para pulgar)
 - 4 direcciones de swipe: Right=YES, Up=MAYBE, Down=MEH, Left=NOPE
 - Roles: Give / Receive / Both (dos rondas)
-- Multi-idioma: EN / ES / TH
+ - Multi-idioma: EN (Complete), ES (Complete), TH (Structure ready - needs translation)
 - Zero tracking, zero cookies de terceros
 
 ## Tasks
@@ -150,6 +150,14 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - **Build Command**: `npm run build`
 - **Node Version**: 20.x
 - **SPA Routing**: Configured via vercel.json
+
+## Internationalization Status
+- ✅ **English**: Complete (162+ activities translated)
+- ✅ **Spanish**: Complete (162+ activities translated)
+- ⚠️ **Thai**: Structure implemented but content needs translation
+- ✅ **Cultural Adaptation**: Sensitive topics handled appropriately
+- ✅ **Language Switching**: Working via UI component
+- ✅ **Fallback System**: Defaults to English for missing translations
 
 ## MVP Completion Summary
 ✅ **Core Features**: Welcome → Onboarding → Swipe → Summary → Share/Export → Load From Link  
