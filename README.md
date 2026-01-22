@@ -157,6 +157,10 @@ npx tsc --noEmit
 - ✅ Updated swipe controls to circular action orbs
 - ✅ Harmonized headers, cards, and progress styling
 
+## 🧭 DarkSideHub Concept
+
+- Hub strategy doc: `DARKSIDEHUB_IDEA.md`
+
 ### Storage Improvements
 - ✅ **Phase 1**: Activities split by category into separate files
 - ✅ **Phase 1**: Created ActivityLoader utility for lazy loading
