@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useRef } from 'react';
 import { activitiesEn } from '../data/activities-en';
 import { categories } from '../data/categories';
 import { useAppStore } from '../store/useAppStore';
@@ -7,19 +7,72 @@ import { SummaryCard } from '../components/SummaryCard';
 import { Button } from '../components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { Users, UserRound, Link, FileText, Download, Plus } from 'lucide-react';
+import { generateShareLink } from '../utils/generateShareLink';
+import { exportText } from '../utils/exportText';
+import { exportImage } from '../utils/exportImage';
 
 type RatingMode = 'give' | 'receive';
 
 export function SummaryScreen() {
   const t = useTranslation();
   const { ratings, userMeta } = useAppStore();
-  
+  const summaryRef = useRef<HTMLDivElement>(null);
+
   const [currentMode, setCurrentMode] = useState<RatingMode>(() => {
     if (userMeta.mode === 'both') return 'give';
     return userMeta.mode;
   });
 
   const showToggle = userMeta.mode === 'both';
+
+  const handleCopyLink = async () => {
+    try {
+      const link = generateShareLink({ ratings, userMeta, lang: 'en', version: '1.0' });
+
+      // Try native share API first (mobile)
+      if (navigator.share) {
+        await navigator.share({
+          title: 'KinkSwipe Results',
+          text: 'Check out my KinkSwipe results!',
+          url: link,
+        });
+      } else {
+        // Fallback to clipboard
+        await navigator.clipboard.writeText(link);
+      }
+      // TODO: Show success toast
+    } catch (error) {
+      console.error('Failed to share link:', error);
+      // TODO: Show error toast
+    }
+  };
+
+  const handleCopyText = async () => {
+    try {
+      const text = exportText(ratings);
+      await navigator.clipboard.writeText(text);
+      // TODO: Show success toast
+    } catch (error) {
+      console.error('Failed to copy text:', error);
+      // TODO: Show error toast
+    }
+  };
+
+  const handleDownloadImage = async () => {
+    if (!summaryRef.current) return;
+    try {
+      await exportImage(summaryRef.current);
+      // TODO: Show success toast
+    } catch (error) {
+      console.error('Failed to download image:', error);
+      // TODO: Show error toast
+    }
+  };
+
+  const handleAddCustom = () => {
+    // TODO: Implement custom category/activity dialog
+    console.log('Add custom clicked');
+  };
 
   const currentRatings = ratings[currentMode as keyof typeof ratings];
   
@@ -70,7 +123,7 @@ export function SummaryScreen() {
   }, [currentRatings]);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center p-4">
+    <div ref={summaryRef} className="min-h-screen bg-background flex flex-col items-center p-4">
       <div className="w-full max-w-2xl space-y-6">
         {showToggle && (
           <div className="flex gap-2 bg-muted p-1 rounded-lg">
@@ -204,7 +257,8 @@ export function SummaryScreen() {
           variant="default"
           size="icon"
           className="rounded-full shadow-lg"
-          onClick={() => {}}
+          onClick={handleCopyLink}
+          title="Copy share link"
         >
           <Link className="w-5 h-5" />
         </Button>
@@ -212,7 +266,8 @@ export function SummaryScreen() {
           variant="default"
           size="icon"
           className="rounded-full shadow-lg"
-          onClick={() => {}}
+          onClick={handleCopyText}
+          title="Copy text summary"
         >
           <FileText className="w-5 h-5" />
         </Button>
@@ -220,7 +275,8 @@ export function SummaryScreen() {
           variant="default"
           size="icon"
           className="rounded-full shadow-lg"
-          onClick={() => {}}
+          onClick={handleDownloadImage}
+          title="Download image"
         >
           <Download className="w-5 h-5" />
         </Button>
@@ -228,7 +284,8 @@ export function SummaryScreen() {
           variant="default"
           size="icon"
           className="rounded-full shadow-lg"
-          onClick={() => {}}
+          onClick={handleAddCustom}
+          title="Add custom"
         >
           <Plus className="w-5 h-5" />
         </Button>
