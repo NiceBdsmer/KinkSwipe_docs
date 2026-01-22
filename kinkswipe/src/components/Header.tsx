@@ -20,7 +20,7 @@ export function Header({ onBack }: HeaderProps) {
     <div className="flex items-center justify-between px-4 py-3 border-b border-border">
       <div className="flex items-center gap-3">
         {onBack && (
-          <Button variant="ghost" size="icon" onClick={onBack}>
+          <Button variant="ghost" size="icon" onClick={onBack} aria-label="Back">
             <ArrowLeft className="h-5 w-5" />
           </Button>
         )}

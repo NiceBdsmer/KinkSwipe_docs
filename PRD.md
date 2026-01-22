@@ -89,8 +89,8 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 ### Phase 6: Summary Screen
 - [x] Create src/screens/SummaryScreen.tsx with global stats panel and category accordion
 - [x] Build global stats showing total counts: You said YES to X, MAYBE to Y, MEH to Z, NOPE to W
-- [ ] Build category accordion using shadcn Accordion, each section shows category name and expandable content
-- [ ] Inside each accordion item, show 4 lists grouped by rating: YES activities, MAYBE activities, MEH activities, NOPE activities
+- [x] Build category accordion using shadcn Accordion, each section shows category name and expandable content
+- [x] Inside each accordion item, show 4 lists grouped by rating: YES activities, MAYBE activities, MEH activities, NOPE activities
 - [ ] Add floating action buttons for: Copy Link, Copy Text, Download Image, Add Custom
 - [ ] If mode was Both, show tabs or toggle to switch between viewing Give ratings and Receive ratings
 - [ ] Write unit tests for SummaryScreen.tsx component

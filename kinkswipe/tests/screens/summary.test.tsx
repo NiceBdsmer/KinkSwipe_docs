@@ -40,6 +40,16 @@ vi.mock('../../src/i18n/useTranslation', () => ({
       nopeCount: 'NOPE to',
       give: 'As Giver',
       receive: 'As Receiver'
+    },
+    categories: {
+      bondage: 'Bondage',
+      impact: 'Impact',
+      sensory: 'Sensory',
+      'power-exchange': 'Power Exchange',
+      edge: 'Edge Play',
+      sexual: 'Sexual',
+      fetishes: 'Fetishes',
+      humiliation: 'Humiliation'
     }
   })
 }));
@@ -53,7 +63,8 @@ describe('SummaryScreen', () => {
   it('should render SummaryScreen component', () => {
     render(<SummaryScreen />);
     
-    expect(screen.getAllByText('Your Results')).toHaveLength(2);
+    expect(screen.getByText('Your Results')).toBeInTheDocument();
+    expect(screen.getByText('You said YES to')).toBeInTheDocument();
   });
 
   it('should display SummaryCard with correct counts for give mode', () => {
@@ -148,10 +159,17 @@ describe('SummaryScreen', () => {
     });
   });
 
-  it('should display total activities count', () => {
+  it('should display category accordion items', () => {
     render(<SummaryScreen />);
     
-    expect(screen.getByText(/You rated .* activities total/i)).toBeInTheDocument();
+    expect(screen.getByText('Bondage')).toBeInTheDocument();
+    expect(screen.getByText('Impact')).toBeInTheDocument();
+    expect(screen.getByText('Sensory')).toBeInTheDocument();
+    expect(screen.getByText('Power Exchange')).toBeInTheDocument();
+    expect(screen.getByText('Edge Play')).toBeInTheDocument();
+    expect(screen.getByText('Sexual')).toBeInTheDocument();
+    expect(screen.getByText('Fetishes')).toBeInTheDocument();
+    expect(screen.getByText('Humiliation')).toBeInTheDocument();
   });
 
   it('should handle empty ratings gracefully', () => {
@@ -167,7 +185,20 @@ describe('SummaryScreen', () => {
     
     render(<SummaryScreen />);
     
-    expect(screen.getAllByText('Your Results')).toHaveLength(2);
+    expect(screen.getByText('Your Results')).toBeInTheDocument();
     expect(screen.getByText('You said YES to')).toBeInTheDocument();
+    expect(screen.getByText('Bondage')).toBeInTheDocument();
+  });
+
+  it('should display activities grouped by rating in accordion content', () => {
+    render(<SummaryScreen />);
+    
+    const bondageTrigger = screen.getByText('Bondage');
+    fireEvent.click(bondageTrigger);
+    
+    waitFor(() => {
+      expect(screen.getByText('Rope Bondage')).toBeInTheDocument();
+      expect(screen.getByText('Handcuffs')).toBeInTheDocument();
+    });
   });
 });

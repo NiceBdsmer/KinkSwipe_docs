@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react';
 import { activitiesEn } from '../data/activities-en';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { categories } from '../data/categories';
 import { useAppStore } from '../store/useAppStore';
 import { useTranslation } from '../i18n/useTranslation';
 import { SummaryCard } from '../components/SummaryCard';
 import { Button } from '../components/ui/button';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 import { Users, UserRound } from 'lucide-react';
 
 type RatingMode = 'give' | 'receive';
@@ -37,6 +38,35 @@ export function SummaryScreen() {
     });
     
     return { yes, maybe, meh, nope };
+  }, [currentRatings]);
+
+  const categoryActivities = useMemo(() => {
+    return categories.map((category) => {
+      const categoryActivitiesEn = activitiesEn.filter(
+        (activity) => activity.categoryId === category.id
+      );
+      
+      const yesActivities = categoryActivitiesEn.filter(
+        (activity) => currentRatings[activity.id] === 'yes'
+      );
+      const maybeActivities = categoryActivitiesEn.filter(
+        (activity) => currentRatings[activity.id] === 'maybe'
+      );
+      const mehActivities = categoryActivitiesEn.filter(
+        (activity) => currentRatings[activity.id] === 'meh'
+      );
+      const nopeActivities = categoryActivitiesEn.filter(
+        (activity) => currentRatings[activity.id] === 'no'
+      );
+      
+      return {
+        category,
+        yesActivities,
+        maybeActivities,
+        mehActivities,
+        nopeActivities
+      };
+    });
   }, [currentRatings]);
 
   return (
@@ -72,16 +102,101 @@ export function SummaryScreen() {
           nopeCount={stats.nope}
         />
 
-        <Card>
-          <CardHeader>
-            <CardTitle>{t.summary.title}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              You rated {activitiesEn.length} activities total.
-            </p>
-          </CardContent>
-        </Card>
+        <Accordion type="multiple" className="w-full">
+          {categoryActivities.map(({ category, yesActivities, maybeActivities, mehActivities, nopeActivities }) => (
+            <AccordionItem key={category.id} value={category.id}>
+              <AccordionTrigger className="capitalize">
+                {t.categories[category.id as keyof typeof t.categories]}
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="space-y-4">
+                  {yesActivities.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="px-2 py-0.5 rounded-full bg-green-600 text-white text-xs font-semibold">
+                          YES
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          {yesActivities.length} {yesActivities.length === 1 ? 'activity' : 'activities'}
+                        </span>
+                      </div>
+                      <ul className="text-sm space-y-1 pl-4">
+                        {yesActivities.map((activity) => (
+                          <li key={activity.id} className="text-foreground">
+                            {activity.texts.en.text}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {maybeActivities.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="px-2 py-0.5 rounded-full bg-blue-600 text-white text-xs font-semibold">
+                          MAYBE
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          {maybeActivities.length} {maybeActivities.length === 1 ? 'activity' : 'activities'}
+                        </span>
+                      </div>
+                      <ul className="text-sm space-y-1 pl-4">
+                        {maybeActivities.map((activity) => (
+                          <li key={activity.id} className="text-foreground">
+                            {activity.texts.en.text}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {mehActivities.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="px-2 py-0.5 rounded-full bg-gray-600 text-white text-xs font-semibold">
+                          MEH
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          {mehActivities.length} {mehActivities.length === 1 ? 'activity' : 'activities'}
+                        </span>
+                      </div>
+                      <ul className="text-sm space-y-1 pl-4">
+                        {mehActivities.map((activity) => (
+                          <li key={activity.id} className="text-foreground">
+                            {activity.texts.en.text}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {nopeActivities.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="px-2 py-0.5 rounded-full bg-red-600 text-white text-xs font-semibold">
+                          NOPE
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          {nopeActivities.length} {nopeActivities.length === 1 ? 'activity' : 'activities'}
+                        </span>
+                      </div>
+                      <ul className="text-sm space-y-1 pl-4">
+                        {nopeActivities.map((activity) => (
+                          <li key={activity.id} className="text-foreground">
+                            {activity.texts.en.text}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {yesActivities.length === 0 &&
+                   maybeActivities.length === 0 &&
+                   mehActivities.length === 0 &&
+                   nopeActivities.length === 0 && (
+                    <p className="text-sm text-muted-foreground">No activities rated in this category.</p>
+                  )}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   );
