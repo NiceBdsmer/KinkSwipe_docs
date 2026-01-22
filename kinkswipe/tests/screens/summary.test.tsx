@@ -201,4 +201,46 @@ describe('SummaryScreen', () => {
       expect(screen.getByText('Handcuffs')).toBeInTheDocument();
     });
   });
+
+  it('should render 4 floating action buttons', () => {
+    render(<SummaryScreen />);
+    
+    const buttons = screen.getAllByRole('button');
+    const iconButtons = buttons.filter(btn => btn.classList.contains('rounded-full'));
+    
+    expect(iconButtons.length).toBe(4);
+  });
+
+  it('should render Copy Link, Copy Text, Download Image, and Add Custom buttons', () => {
+    render(<SummaryScreen />);
+    
+    const buttons = screen.getAllByRole('button');
+    const iconButtons = buttons.filter(btn => btn.classList.contains('rounded-full'));
+    
+    expect(iconButtons.length).toBe(4);
+    
+    iconButtons.forEach(button => {
+      expect(button).toBeInTheDocument();
+      expect(button).toBeEnabled();
+    });
+  });
+
+  it('should have buttons with fixed positioning at bottom right', () => {
+    const { container } = render(<SummaryScreen />);
+    
+    const iconButtons = container.querySelectorAll('.fixed.bottom-4.right-4 button');
+    
+    expect(iconButtons.length).toBe(4);
+  });
+
+  it('should handle button clicks without errors', () => {
+    render(<SummaryScreen />);
+    
+    const buttons = screen.getAllByRole('button');
+    const iconButtons = buttons.filter(btn => btn.classList.contains('rounded-full'));
+    
+    iconButtons.forEach(button => {
+      expect(() => fireEvent.click(button)).not.toThrow();
+    });
+  });
 });

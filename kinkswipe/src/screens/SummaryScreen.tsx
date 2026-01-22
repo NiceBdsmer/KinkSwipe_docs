@@ -6,7 +6,7 @@ import { useTranslation } from '../i18n/useTranslation';
 import { SummaryCard } from '../components/SummaryCard';
 import { Button } from '../components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
-import { Users, UserRound } from 'lucide-react';
+import { Users, UserRound, Link, FileText, Download, Plus } from 'lucide-react';
 
 type RatingMode = 'give' | 'receive';
 
@@ -197,6 +197,41 @@ export function SummaryScreen() {
             </AccordionItem>
           ))}
         </Accordion>
+      </div>
+
+      <div className="fixed bottom-4 right-4 flex flex-col gap-2">
+        <Button
+          variant="default"
+          size="icon"
+          className="rounded-full shadow-lg"
+          onClick={() => {}}
+        >
+          <Link className="w-5 h-5" />
+        </Button>
+        <Button
+          variant="default"
+          size="icon"
+          className="rounded-full shadow-lg"
+          onClick={() => {}}
+        >
+          <FileText className="w-5 h-5" />
+        </Button>
+        <Button
+          variant="default"
+          size="icon"
+          className="rounded-full shadow-lg"
+          onClick={() => {}}
+        >
+          <Download className="w-5 h-5" />
+        </Button>
+        <Button
+          variant="default"
+          size="icon"
+          className="rounded-full shadow-lg"
+          onClick={() => {}}
+        >
+          <Plus className="w-5 h-5" />
+        </Button>
       </div>
     </div>
   );
