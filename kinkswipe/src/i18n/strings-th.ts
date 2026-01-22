@@ -88,5 +88,15 @@ export const stringsTh: Strings = {
     fetishesDesc: 'ความหลงใหลเฉพาะและความสนใจพิเศษ',
     humiliation: 'การดูถูก',
     humiliationDesc: 'การเล่นการดูถูกและการลดทอนศักดิ์ศรี'
+  },
+  tutorial: {
+    title: 'วิธีการเลื่อน',
+    heading: 'เลื่อนเพื่อให้คะแนน',
+    description: 'เลื่อนการ์ดในทิศทางต่างๆเพื่อแสดงความชอบของคุณ',
+    swipeRight: 'สนใจ',
+    swipeUp: 'อาจจะ',
+    swipeDown: 'ไม่แน่ใจ',
+    swipeLeft: 'ไม่สนใจ',
+    dismissHint: 'เลื่อนการ์ดใดก็ได้เพื่อเริ่ม'
   }
 };

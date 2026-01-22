@@ -63,4 +63,5 @@ export interface UserState {
   currentScreen: 'welcome' | 'onboarding' | 'category-selection' | 'swipe' | 'summary' | 'load';
   currentCategory: string;
   currentActivityIndex: number;
+  tutorialSeen: boolean;
 }

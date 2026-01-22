@@ -20,6 +20,7 @@ type AppState = UserState & {
   setScreen: (screen: UserState['currentScreen']) => void;
   setCurrentCategory: (categoryId: string) => void;
   setCurrentActivityIndex: (index: number) => void;
+  setTutorialSeen: (seen: boolean) => void;
   resetRatingsForMode: (mode: RatingMode) => void;
   resetState: () => void;
 };
@@ -38,7 +39,8 @@ const getDefaultState = (): UserState => ({
   customCategories: [],
   currentScreen: 'welcome',
   currentCategory: categories[0]?.id ?? '',
-  currentActivityIndex: 0
+  currentActivityIndex: 0,
+  tutorialSeen: false
 });
 
 export const useAppStore = create<AppState>()(
@@ -65,6 +67,7 @@ export const useAppStore = create<AppState>()(
       setScreen: (currentScreen) => set({ currentScreen }),
       setCurrentCategory: (currentCategory) => set({ currentCategory }),
       setCurrentActivityIndex: (currentActivityIndex) => set({ currentActivityIndex }),
+      setTutorialSeen: (tutorialSeen) => set({ tutorialSeen }),
       resetRatingsForMode: (mode) =>
         set((state) => ({
           ratings: {

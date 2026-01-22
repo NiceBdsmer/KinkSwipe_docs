@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Header } from '../components/Header';
 import { SwipeCard } from '../components/SwipeCard';
+import { TutorialCard } from '../components/TutorialCard';
 import { ActionButtons } from '../components/ActionButtons';
 import { Progress } from '../components/ui/progress';
 import { useAppStore } from '../store/useAppStore';
@@ -14,11 +15,12 @@ import { Grid3X3 } from 'lucide-react';
 
 export function SwipeScreen() {
   const t = useTranslation();
-  const { currentCategory, currentActivityIndex, ratings, userMeta, setScreen, setRating, setCurrentCategory, setCurrentActivityIndex, lang } = useAppStore();
+  const { currentCategory, currentActivityIndex, ratings, userMeta, tutorialSeen, setScreen, setRating, setCurrentCategory, setCurrentActivityIndex, lang, setTutorialSeen } = useAppStore();
 
   const [showRoundComplete, setShowRoundComplete] = useState(false);
 
   const currentMode: 'give' | 'receive' = userMeta.mode === 'both' ? 'give' : userMeta.mode;
+  const showTutorial = !tutorialSeen && currentActivityIndex === 0 && currentCategory === categories[0].id;
 
   const activities = getActivities(lang);
   const categoryActivities = activities.filter(a => a.categoryId === currentCategory);
@@ -55,6 +57,11 @@ export function SwipeScreen() {
     } else {
       moveToNextCategory();
     }
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleTutorialSwipe = (_direction: 'left' | 'right' | 'up' | 'down') => {
+    setTutorialSeen(true);
   };
   
   const moveToNextCategory = () => {
@@ -119,12 +126,16 @@ export function SwipeScreen() {
             </div>
         
         <div className="flex-1 relative min-h-[300px] sm:min-h-[400px]">
-          {currentActivity && (
+          {showTutorial && !currentActivity ? (
+            <TutorialCard
+              onSwipe={handleTutorialSwipe}
+            />
+          ) : currentActivity ? (
             <SwipeCard
               activity={currentActivity}
               onSwipe={handleSwipe}
             />
-          )}
+          ) : null}
         </div>
         
         <ActionButtons

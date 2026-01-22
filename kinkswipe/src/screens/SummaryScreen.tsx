@@ -36,7 +36,8 @@ export function SummaryScreen() {
         customCategories: [],
         currentScreen: 'summary',
         currentCategory: '',
-        currentActivityIndex: 0
+        currentActivityIndex: 0,
+        tutorialSeen: true
       });
 
       // Try native share API first (mobile)

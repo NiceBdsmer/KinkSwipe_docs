@@ -88,5 +88,15 @@ export const stringsEs: Strings = {
     fetishesDesc: 'Fetiches específicos e intereses especializados',
     humiliation: 'Humillación',
     humiliationDesc: 'Juego de humillación y degradación'
+  },
+  tutorial: {
+    title: 'Cómo Deslizar',
+    heading: 'Desliza para Calificar',
+    description: 'Desliza las tarjetas en diferentes direcciones para expresar tus preferencias',
+    swipeRight: 'Interesado',
+    swipeUp: 'Tal vez',
+    swipeDown: 'No seguro',
+    swipeLeft: 'No interesado',
+    dismissHint: 'Desliza cualquier tarjeta para comenzar'
   }
 };

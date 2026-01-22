@@ -86,6 +86,16 @@ export const stringsEn = {
     fetishesDesc: 'Specific fetishes and specialized interests',
     humiliation: 'Humiliation',
     humiliationDesc: 'Humiliation and degradation play'
+  },
+  tutorial: {
+    title: 'How to Swipe',
+    heading: 'Swipe to Rate',
+    description: 'Swipe cards in different directions to express your preferences',
+    swipeRight: 'Interested',
+    swipeUp: 'Maybe',
+    swipeDown: 'Not sure',
+    swipeLeft: 'Not interested',
+    dismissHint: 'Swipe any card to start'
   }
 };
 
