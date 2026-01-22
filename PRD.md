@@ -74,15 +74,15 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [x] Run tests and lint, then merge to master
 
 ### Phase 5: Swipe Screen
-- [ ] Create src/screens/SwipeScreen.tsx with Header, SwipeCard stack, and ActionButtons
-- [ ] Implement swipe handler that maps direction to rating: right=yes, up=maybe, down=tolerate, left=no
-- [ ] Save rating to store.ratings[currentMode][activityId] on each swipe
-- [ ] Advance to next activity after swipe, move to next category when current is complete
-- [ ] Add Skip Category button that marks all remaining activities in category as undefined and moves to next
-- [ ] When all categories complete in Give mode and userMeta.mode is both, show RoundComplete dialog asking to continue as Receiver
-- [ ] When all categories complete (or user declines second round), navigate to SummaryScreen
-- [ ] Write unit tests for SwipeScreen.tsx component
-- [ ] Write unit tests for swipe handler logic (direction to rating mapping)
+- [x] Create src/screens/SwipeScreen.tsx with Header, SwipeCard stack, and ActionButtons
+- [x] Implement swipe handler that maps direction to rating: right=yes, up=maybe, down=tolerate, left=no
+- [x] Save rating to store.ratings[currentMode][activityId] on each swipe
+- [x] Advance to next activity after swipe, move to next category when current is complete
+- [x] Add Skip Category button that marks all remaining activities in category as undefined and moves to next
+- [x] When all categories complete in Give mode and userMeta.mode is both, show RoundComplete dialog asking to continue as Receiver
+- [x] When all categories complete (or user declines second round), navigate to SummaryScreen
+- [x] Write unit tests for SwipeScreen.tsx component
+- [x] Write unit tests for swipe handler logic (direction to rating mapping)
 - [ ] Write E2E tests for complete swipe flow (all activities → category change → summary)
 - [ ] Run tests and lint, then merge to master
 
