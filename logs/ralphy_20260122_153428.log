@@ -1,0 +1,15 @@
+[15:34:28] [info] === Ralphy v3.1.0 Started ===
+[15:34:28] [info] Engine: OpenCode | Model: zai-coding-plan/glm-4.7
+[15:34:28] [info] PRD: PRD.md
+[15:34:28] [info] >>> Task: Create src/screens/SwipeScreen.tsx with Header, Sw
+[15:34:28] [info] Tasks remaining: 56
+[15:34:28] [debug] [PROMPT] @PRD.md @progress.txt
+1. Find the highest-priority incomplete task and implement it.
+2. Write tests for the feature.
+3. Run tests and ensure they pass before proceeding.
+4. Run linting and ensure it passes before proceeding.
+5. Update the PRD to mark the task as complete (change '- [ ]' to '- [x]').
+6. Append your progress to progress.txt.
+7. Commit your changes with a descriptive message.
+ONLY WORK ON A SINGLE TASK. Do not proceed if tests fail. Do not proceed if linting fails.
+If ALL tasks in the PRD are complete, output <promise>COMPLETE</promise>.

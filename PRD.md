@@ -93,7 +93,7 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [x] Inside each accordion item, show 4 lists grouped by rating: YES activities, MAYBE activities, MEH activities, NOPE activities
 - [x] Add floating action buttons for: Copy Link, Copy Text, Download Image, Add Custom
 - [x] If mode was Both, show tabs or toggle to switch between viewing Give ratings and Receive ratings
-- [ ] Write unit tests for SummaryScreen.tsx component
+- [x] Write unit tests for SummaryScreen.tsx component
 - [ ] Write unit tests for category accordion expansion/collapse logic
 - [ ] Write E2E tests for summary display (all activities grouped correctly)
 - [ ] Run tests and lint, then merge to master
