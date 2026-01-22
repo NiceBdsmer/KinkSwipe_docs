@@ -1,0 +1,147 @@
+{
+  "name": "KinkSwipe MVP Completion & Polish",
+  "description": "Complete the MVP with custom categories, toast notifications, i18n improvements, bundle optimization, and comprehensive testing.",
+  "branchName": "ralph/mvp-completion-polish",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Fix SwipeScreen Tests",
+      "description": "As a developer, I want all SwipeScreen tests to pass correctly so that I have confidence in the automated tests.",
+      "acceptanceCriteria": [
+        "All 13 tests in SwipeScreen.test.tsx pass",
+        "Tests use @testing-library/user-event to simulate swipe gestures",
+        "Mock of react-tinder-card is correctly configured",
+        "Tests cover: swipe directions, rating updates, navigation, both mode",
+        "Tests are deterministic and not flaky",
+        "npm run lint passes",
+        "npm run test passes for SwipeScreen tests",
+        "npx tsc --noEmit passes (no TypeScript errors)"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": "",
+      "dependsOn": [],
+      "completionNotes": "Completed by agent"
+    },
+    {
+      "id": "US-002",
+      "title": "Implement Custom Categories & Activities",
+      "description": "As a user, I want to add my own custom categories and activities so that the app reflects my unique preferences.",
+      "acceptanceCriteria": [
+        "Add Custom button in SummaryScreen opens a dialog modal",
+        "Dialog allows creating new category with name",
+        "Within category, activities can be added with: name (required), description (optional), edge flag (checkbox)",
+        "Custom categories are saved to localStorage",
+        "Custom activities appear in summary alongside default activities",
+        "Validation: name not empty, category minimum 1 activity",
+        "Custom items can be edited and deleted",
+        "npm run lint passes",
+        "npx tsc --noEmit passes (no TypeScript errors)",
+        "Verify in browser that custom categories save and load correctly"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "",
+      "dependsOn": []
+    },
+    {
+      "id": "US-003",
+      "title": "Add Toast Notifications",
+      "description": "As a user, I want to receive clear visual feedback when I copy links, export results, or errors occur so that I can confirm my actions worked.",
+      "acceptanceCriteria": [
+        "Toast notification system implemented (using shadcn/ui sonner or similar)",
+        "Toast appears on successful share link copy",
+        "Toast appears on successful text summary copy",
+        "Toast appears on successful image download",
+        "Error toast appears when copy/export actions fail",
+        "Toast has variants: success (green), error (red)",
+        "Toast auto-dismisses after 3-5 seconds",
+        "Replace all TODO comments for toast notifications in SummaryScreen",
+        "npm run lint passes",
+        "npx tsc --noEmit passes (no TypeScript errors)",
+        "Verify in browser that toasts appear and dismiss correctly"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "",
+      "dependsOn": []
+    },
+    {
+      "id": "US-004",
+      "title": "Complete i18n Translations",
+      "description": "As a Spanish or Thai-speaking user, I want all text translated correctly so that I have a native experience in my language.",
+      "acceptanceCriteria": [
+        "Add tutorial.* keys to all strings-*.ts files: title, heading, description, swipeRight, swipeUp, swipeDown, swipeLeft, dismissHint",
+        "Add footer.* keys to all strings-*.ts files: home, resetAll",
+        "No hardcoded English text in components",
+        "Spanish translations added to strings-es.ts",
+        "Thai translations added to strings-th.ts",
+        "FooterNavigation.tsx uses t.footer.* instead of hardcoded text",
+        "TutorialCard.tsx uses t.tutorial.* instead of hardcoded text",
+        "npm run lint passes",
+        "npx tsc --noEmit passes (no TypeScript errors)",
+        "Verify in browser that all text displays correctly in EN, ES, TH"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "",
+      "dependsOn": []
+    },
+    {
+      "id": "US-005",
+      "title": "Code Splitting & Bundle Optimization",
+      "description": "As a mobile user, I want the app to load quickly and use minimal bandwidth so that I have a smooth experience even on slow connections.",
+      "acceptanceCriteria": [
+        "Main bundle reduced from 685KB to <400KB",
+        "Lazy loading implemented for heavy screens (SwipeScreen, SummaryScreen, LoadFromLink)",
+        "Manual chunks configured for large libraries: framer-motion, html2canvas, lz-string",
+        "Chunk size warning eliminated or mitigated",
+        "Time to interactive (TTI) reduced by >30%",
+        "Optimized build completes without breaking changes",
+        "npm run lint passes",
+        "npm run build completes successfully",
+        "npx tsc --noEmit passes (no TypeScript errors)",
+        "Verify in browser that lazy loading screens load correctly on demand"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "",
+      "dependsOn": []
+    },
+    {
+      "id": "US-006",
+      "title": "Comprehensive Testing & QA",
+      "description": "As a user, I want all app functionality to work correctly without bugs or errors so that I have a reliable experience.",
+      "acceptanceCriteria": [
+        "All 97 tests pass (100% pass rate)",
+        "Zero TypeScript errors",
+        "Zero ESLint warnings",
+        "Production build completes successfully without critical warnings",
+        "Manual testing completed on: Desktop (Chrome, Safari, Firefox), Mobile Safari (iOS), Mobile Chrome (Android), Small viewport (iPhone SE), Large viewport (Desktop)",
+        "E2E flows validated: Onboarding complete (give/receive/both), Swipe all categories, Summary and export, Load from link, Reset state",
+        "Edge cases tested: URL with invalid payload, No localStorage (private mode), Language change during swipe, Navigation interruption (back button)",
+        "Lighthouse score >90 on mobile",
+        "First Contentful Paint <1.5s",
+        "Time to Interactive <3s",
+        "Total Bundle Size <500KB gzipped",
+        "npm run lint passes",
+        "npm run test passes (all 97 tests)",
+        "npm run build passes",
+        "npx tsc --noEmit passes (no TypeScript errors)"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "Depends on US-001 (SwipeScreen tests), US-002 (custom categories), US-003 (toasts), US-004 (i18n), US-005 (bundle optimization)",
+      "dependsOn": [
+        "US-001",
+        "US-002",
+        "US-003",
+        "US-004",
+        "US-005"
+      ]
+    }
+  ],
+  "metadata": {
+    "updatedAt": "2026-01-22T18:00:12.975Z"
+  }
+}

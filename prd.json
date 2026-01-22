@@ -1,0 +1,79 @@
+{
+  "name": "Mobile-First Interface & Interaction Overhaul",
+  "branchName": "ralph/mobile-first-overhaul",
+  "description": "Mobile-first interface overhaul with 4-way swipe, tutorial, and footer navigation.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Fix Mobile Viewport Layout",
+      "description": "As a mobile user, I want the application interface to be contained within my screen without horizontal scrolling so that the experience feels native and polished.",
+      "acceptanceCriteria": [
+        "Set main container to `overflow-x: hidden` to prevent horizontal scroll.",
+        "Ensure all buttons and interactive elements respect safe-area margins (avoid notches/edges).",
+        "Center the card stack dynamically for different screen widths.",
+        "Verify layout on small (e.g., iPhone SE) and large mobile viewports.",
+        "npm run typecheck && npm run lint passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "",
+      "dependsOn": []
+    },
+    {
+      "id": "US-002",
+      "title": "Implement 4-Directional Swipe Logic",
+      "description": "As a user, I want to swipe cards in four directions so that I can categorize content with 'No', 'Yes', 'Maybe', and 'Skip' actions.",
+      "acceptanceCriteria": [
+        "Implement Left Swipe action: 'No' (Reject).",
+        "Implement Right Swipe action: 'Yes' (Like/Accept).",
+        "Implement Up Swipe action: 'Maybe' (Details/Super Like).",
+        "Implement Down Swipe action: 'Skip' (Dismiss/Next).",
+        "Add visual feedback (rotation/opacity) during the drag gesture.",
+        "Ensure action triggers only after a defined swipe threshold is crossed.",
+        "npm run typecheck && npm run lint passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "",
+      "dependsOn": [
+        "US-001"
+      ]
+    },
+    {
+      "id": "US-003",
+      "title": "Add Onboarding Tutorial Card",
+      "description": "As a new user, I want to see an instructional card at the start of the stack so that I understand the 4-way swipe controls.",
+      "acceptanceCriteria": [
+        "Create a 'Tutorial Card' visual design showing the 4 directions.",
+        "Insert this card as the very first item in the card stack.",
+        "Ensure the card behaves like a normal card (requires swipe to dismiss).",
+        "Implement logic to show this card only once (one-time) per user/install.",
+        "npm run typecheck && npm run lint passes"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "",
+      "dependsOn": [
+        "US-002"
+      ]
+    },
+    {
+      "id": "US-004",
+      "title": "Create Persistent Footer Navigation",
+      "description": "As a user, I want a fixed menu at the bottom of the screen so that I can easily return home or reset the stack.",
+      "acceptanceCriteria": [
+        "Implement a sticky footer bar fixed to the viewport bottom.",
+        "Add 'Home' button that navigates to the landing page.",
+        "Add 'Reset All' button that restarts the current session/stack.",
+        "Ensure footer `z-index` keeps it above the swipeable area but doesn't obscure content.",
+        "npm run typecheck && npm run lint passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "",
+      "dependsOn": [
+        "US-001"
+      ]
+    }
+  ]
+}

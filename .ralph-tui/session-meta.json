@@ -1,0 +1,15 @@
+{
+  "id": "554ae09b-060b-49d6-9a3e-ecf323f83091",
+  "status": "interrupted",
+  "startedAt": "2026-01-22T17:32:59.027Z",
+  "updatedAt": "2026-01-22T17:33:28.181Z",
+  "agentPlugin": "opencode",
+  "trackerPlugin": "json",
+  "prdPath": "./tasks/sprint-prd.json",
+  "currentIteration": 0,
+  "maxIterations": 0,
+  "totalTasks": 0,
+  "tasksCompleted": 0,
+  "cwd": "/Users/sovereignac/Documents/workspace/WebDev/KinkSwipe_docs",
+  "endedAt": "2026-01-22T17:33:28.181Z"
+}

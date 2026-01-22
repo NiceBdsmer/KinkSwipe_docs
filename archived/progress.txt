@@ -1,0 +1,21 @@
+2026-01-21: Completed Phase 0 task: Create Vite project with React and TypeScript
+2026-01-21: Completed Phase 0 task: Initialize Tailwind CSS and fix missing dependencies
+2026-01-21: Completed Phase 0 task: Add shadcn components
+2026-01-21: Completed Phase 0 task: Create src/types/index.ts with core TypeScript definitions
+2026-01-21: Completed Phase 1 task: Create src/data/categories.ts with 8 defined categories. Installed vitest for testing.
+2026-01-21: Completed Phase 1 task: Create src/data/activities-en.ts with ~150 activities. Verified with tests.
+2026-01-21: Completed Phase 1 task: Create src/data/activities-es.ts with Spanish translations for all activities. Verified with tests.
+2026-01-21: Added src/data/activities-th.ts using English placeholders for Thai translation.
+2026-01-21: Completed Phase 1 task: Create src/store/useAppStore.ts with Zustand store and defaults.
+2026-01-21: Completed Phase 1 task: Add Zustand persist middleware with kinkswipe-state key.
+2026-01-22: Created src/utils/encodePayload.ts and src/utils/decodePayload.ts with lz-string. Tests pass.
+2026-01-22: Completed Phase 2: Created i18n strings (en, es, th), useTranslation hook, and LanguageSwitcher component. Tests pass.
+2026-01-22: Completed Phase 3: Created all core components - Header, SwipeCard, ActionButtons, CategoryProgress, EdgeWarning, SummaryCard. Tests pass.
+2026-01-22: Completed Phase 0: Created vercel.json with SPA routing rewrites for Vercel deployment.
+2026-01-22: Completed Phase 4 task: Created src/screens/Onboarding.tsx with 3-step wizard (role, experience, safety). Tests pass.
+2026-01-22: Completed Phase 4 task: Write E2E tests for complete onboarding flow. 20 comprehensive tests covering all role options, experience levels, navigation, validation, progress indicators, and full user flows. All tests pass.
+2026-01-22: Completed Phase 5 tasks 77-86: Implemented SwipeScreen.tsx with full swipe flow including Header, SwipeCard stack, ActionButtons, swipe handler (direction→rating mapping), rating persistence, activity/category progression, Skip Category button, RoundComplete dialog for both mode, navigation to summary. Fixed failing unit tests (13 tests). Added eslint override for test files to allow `any` type for mocking. All tests pass (58 tests).
+2026-01-22: Completed Phase 5 task 87: Ran tests (58 passed) and linting. All checks passed.
+2026-01-22: Completed Phase 6 task 91: Built global stats in SummaryScreen.tsx showing total counts for YES/MAYBE/MEH/NOPE. Implemented mode toggle for both give/receive views. Wrote 9 unit tests. All tests pass (67 total). Linting passed.
+2026-01-22: Completed Phase 6 task 93: Inside each accordion item, show 4 lists grouped by rating: YES activities, MAYBE activities, MEH activities, NOPE activities. Added Accordion component to SummaryScreen.tsx with category filtering and rating grouping. Updated tests to include categories translation mock. Added test for accordion expansion logic. Fixed Header component back button with aria-label. All 68 tests pass. Linting passed.
+2026-01-22: Completed Phase 6 task 94: Added floating action buttons to SummaryScreen.tsx for Copy Link, Copy Text, Download Image, and Add Custom. Buttons are fixed positioned at bottom right with appropriate icons (Link, FileText, Download, Plus). Added 4 unit tests for button rendering and click handling. All 72 tests pass. Linting passed.
