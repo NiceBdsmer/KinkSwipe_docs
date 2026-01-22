@@ -26,18 +26,20 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
       key={activity.id}
       className="absolute inset-0 w-full h-full"
       swipeRequirementType="position"
-      swipeThreshold={50}
+      swipeThreshold={30}
       preventSwipe={[]}
-      onSwipeRequirementFulfilled={(direction) => setActiveDirection(direction)}
-      onSwipeRequirementUnfulfilled={() => setActiveDirection(null)}
-      onCardLeftScreen={(direction) => {
-        setActiveDirection(null);
+      onSwipeRequirementFulfilled={(direction) => {
+        setActiveDirection(direction);
         if (direction === 'up') onSwipe('up');
         else if (direction === 'right') onSwipe('right');
         else if (direction === 'down') onSwipe('down');
         else onSwipe('left');
       }}
-      onSwipe={() => {}} // Disable this callback, use onCardLeftScreen instead
+      onSwipeRequirementUnfulfilled={() => setActiveDirection(null)}
+      onCardLeftScreen={() => {
+        setActiveDirection(null);
+      }}
+      onSwipe={() => {}}
     >
       <Card className="absolute inset-0 neon-frame">
         <CardHeader>
