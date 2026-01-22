@@ -17,6 +17,8 @@ type AppState = UserState & {
   setRating: (mode: RatingMode, activityId: string, rating: RatingValue) => void;
   setCustomCategories: (customCategories: CustomCategory[]) => void;
   addCustomCategory: (customCategory: CustomCategory) => void;
+  updateCustomCategory: (id: string, customCategory: CustomCategory) => void;
+  deleteCustomCategory: (id: string) => void;
   setScreen: (screen: UserState['currentScreen']) => void;
   setCurrentCategory: (categoryId: string) => void;
   setCurrentActivityIndex: (index: number) => void;
@@ -63,6 +65,16 @@ export const useAppStore = create<AppState>()(
       addCustomCategory: (customCategory) =>
         set((state) => ({
           customCategories: [...state.customCategories, customCategory]
+        })),
+      updateCustomCategory: (id, customCategory) =>
+        set((state) => ({
+          customCategories: state.customCategories.map(c =>
+            c.id === id ? customCategory : c
+          )
+        })),
+      deleteCustomCategory: (id) =>
+        set((state) => ({
+          customCategories: state.customCategories.filter(c => c.id !== id)
         })),
       setScreen: (currentScreen) => set({ currentScreen }),
       setCurrentCategory: (currentCategory) => set({ currentCategory }),
