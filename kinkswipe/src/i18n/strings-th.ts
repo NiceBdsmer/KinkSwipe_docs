@@ -63,7 +63,11 @@ export const stringsTh: Strings = {
     completed: 'เสร็จสิ้น',
     start: 'เริ่ม',
     review: 'ตรวจสอบ',
-    back: 'กลับไปเมนู'
+    back: 'กลับไปเมนู',
+    resetProgress: 'รีเซ็ตความคืบหน้า',
+    resetConfirm: 'คุณแน่ใจหรือไม่ว่าต้องการรีเซ็ตความคืบหน้าทั้งหมดของคุณ? การกระทำนี้ไม่สามารถยกเลิกได้',
+    resetCancel: 'ยกเลิก',
+    resetConfirmBtn: 'รีเซ็ตทั้งหมด'
   },
   categories: {
     basics: 'พื้นฐาน',

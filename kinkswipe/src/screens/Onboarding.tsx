@@ -60,8 +60,8 @@ export function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-3 sm:p-4">
+      <div className="w-full max-w-lg sm:max-w-md">
         <div className="mb-8">
           <div className="flex justify-center gap-2 mb-4">
             {steps.map((step, index) => (
@@ -81,7 +81,7 @@ export function Onboarding() {
 
         {currentStep === 'role' && (
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-center">{t.onboarding.roleTitle}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-center">{t.onboarding.roleTitle}</h2>
             <div className="grid gap-3">
               {[
                 { value: 'give', label: t.onboarding.roleGiver },
@@ -97,8 +97,8 @@ export function Onboarding() {
                   }`}
                   onClick={() => setSelectedRole(option.value as 'give' | 'receive' | 'both')}
                 >
-                  <CardHeader>
-                    <CardTitle className="text-lg">{option.label}</CardTitle>
+                  <CardHeader className="pb-3 sm:pb-6">
+                    <CardTitle className="text-base sm:text-lg">{option.label}</CardTitle>
                   </CardHeader>
                 </Card>
               ))}
@@ -108,7 +108,7 @@ export function Onboarding() {
 
         {currentStep === 'experience' && (
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-center">{t.onboarding.experienceTitle}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-center">{t.onboarding.experienceTitle}</h2>
             <div className="grid gap-3">
               {[
                 { value: 'newbie', label: t.onboarding.experienceNewbie },
@@ -124,8 +124,8 @@ export function Onboarding() {
                   }`}
                   onClick={() => setSelectedExperience(option.value as 'newbie' | 'curious' | 'experienced')}
                 >
-                  <CardHeader>
-                    <CardTitle className="text-lg">{option.label}</CardTitle>
+                  <CardHeader className="pb-3 sm:pb-6">
+                    <CardTitle className="text-base sm:text-lg">{option.label}</CardTitle>
                   </CardHeader>
                 </Card>
               ))}
@@ -135,11 +135,11 @@ export function Onboarding() {
 
         {currentStep === 'safety' && (
           <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">{t.onboarding.safetyTitle}</CardTitle>
+            <CardHeader className="pb-3 sm:pb-6">
+              <CardTitle className="text-xl sm:text-2xl">{t.onboarding.safetyTitle}</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-muted-foreground">{t.onboarding.safetyText}</p>
+            <CardContent className="space-y-4 p-3 sm:p-6">
+              <p className="text-xs sm:text-sm text-muted-foreground">{t.onboarding.safetyText}</p>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="safety"

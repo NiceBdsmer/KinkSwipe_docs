@@ -2,21 +2,23 @@ import { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Progress } from '../components/ui/progress';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../components/ui/dialog';
 import { FooterControls } from '../components/FooterControls';
 import { useAppStore } from '../store/useAppStore';
 import { useTranslation } from '../i18n/useTranslation';
 import { categories } from '../data/categories';
 import { getActivities } from '../utils/getActivities';
-import { ChevronRight, Play, Lock } from 'lucide-react';
+import { ChevronRight, Play, Lock, RotateCcw } from 'lucide-react';
 
 export function CategorySelection() {
   const t = useTranslation();
-  const { setScreen, setCurrentCategory, setCurrentActivityIndex, ratings, userMeta, lang } = useAppStore();
+  const { setScreen, setCurrentCategory, setCurrentActivityIndex, ratings, userMeta, lang, resetState } = useAppStore();
   
   const activities = getActivities(lang);
   const currentMode: 'give' | 'receive' = userMeta.mode === 'both' ? 'give' : userMeta.mode;
   
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showResetDialog, setShowResetDialog] = useState(false);
 
   const getCategoryInfo = (categoryId: string) => {
     const categoryActivities = activities.filter(a => a.categoryId === categoryId);
@@ -68,6 +70,12 @@ export function CategorySelection() {
     setScreen('swipe');
   };
 
+  const handleReset = () => {
+    resetState();
+    setShowResetDialog(false);
+    setScreen('welcome');
+  };
+
   const getTotalProgress = () => {
     const totalActivities = activities.length;
     const ratedCount = Object.keys(ratings[currentMode] ?? {}).length;
@@ -76,7 +84,7 @@ export function CategorySelection() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <div className="px-4 py-6 max-w-4xl mx-auto w-full">
+      <div className="px-4 py-4 sm:py-6 max-w-6xl mx-auto w-full lg:max-w-5xl xl:max-w-4xl 2xl:max-w-3xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2">{t.categorySelection?.title || 'Choose Your Path'}</h1>
           <p className="text-muted-foreground mb-4">
@@ -92,7 +100,7 @@ export function CategorySelection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 gap-3 sm:gap-4">
           {categories.map((category) => {
             const info = getCategoryInfo(category.id);
             const title = getCategoryTitle(category.id);
@@ -118,20 +126,20 @@ export function CategorySelection() {
                     ) : null}
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground line-clamp-2">
+                <CardContent className="space-y-3 sm:space-y-4 p-3 sm:p-6">
+                  <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
                     {description}
                   </p>
                   
                   <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">
-                        {info.activities} {t.categorySelection?.activities || 'activities'}
-                      </span>
-                      <span className="text-muted-foreground">
-                        {info.completed} {t.categorySelection?.completed || 'completed'}
-                      </span>
-                    </div>
+                  <div className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-muted-foreground">
+                      {info.activities} {t.categorySelection?.activities || 'activities'}
+                    </span>
+                    <span className="text-muted-foreground">
+                      {info.completed} {t.categorySelection?.completed || 'completed'}
+                    </span>
+                  </div>
                     
                     {info.activities > 0 && (
                       <Progress 
@@ -142,7 +150,7 @@ export function CategorySelection() {
                   </div>
                   
                   <Button
-                    className="w-full"
+                    className="w-full h-8 sm:h-9 text-xs sm:text-sm"
                     variant={info.isCompleted ? "secondary" : "default"}
                     size="sm"
                     onClick={(e) => {
@@ -167,17 +175,55 @@ export function CategorySelection() {
         </div>
 
         <div className="flex flex-col items-center gap-4 mt-8">
-          <Button
-            variant="outline"
-            onClick={() => setScreen('welcome')}
-          >
-            {t.categorySelection?.back || 'Back to Menu'}
-          </Button>
+          <div className="flex gap-3 w-full max-w-xs">
+            <Button
+              variant="outline"
+              onClick={() => setScreen('welcome')}
+              className="flex-1"
+            >
+              {t.categorySelection?.back || 'Back to Menu'}
+            </Button>
+            
+            <Button
+              variant="destructive"
+              onClick={() => setShowResetDialog(true)}
+              className="flex-1"
+            >
+              <RotateCcw className="w-4 h-4 mr-2" />
+              {t.categorySelection?.resetProgress || 'Reset'}
+            </Button>
+          </div>
           
           {/* Footer with Controls */}
           <FooterControls />
         </div>
       </div>
+      
+      {/* Reset Confirmation Dialog */}
+      <Dialog open={showResetDialog} onOpenChange={setShowResetDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{t.categorySelection?.resetProgress || 'Reset Progress'}</DialogTitle>
+            <DialogDescription>
+              {t.categorySelection?.resetConfirm || 'Are you sure you want to reset all your progress? This action cannot be undone.'}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setShowResetDialog(false)}
+            >
+              {t.categorySelection?.resetCancel || 'Cancel'}
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={handleReset}
+            >
+              {t.categorySelection?.resetConfirmBtn || 'Reset Everything'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

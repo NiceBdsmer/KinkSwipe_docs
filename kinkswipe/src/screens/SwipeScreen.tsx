@@ -106,7 +106,7 @@ export function SwipeScreen() {
         }
       />
           
-          <div className="flex-1 flex flex-col px-4 py-2 max-w-md mx-auto w-full">
+           <div className="flex-1 flex flex-col px-3 sm:px-4 py-2 max-w-lg sm:max-w-md mx-auto w-full">
             <div className="px-4 pb-2">
               <Progress value={categoryPercent} className="h-2" />
               <p className="text-xs text-muted-foreground mt-1 text-center">
@@ -118,7 +118,7 @@ export function SwipeScreen() {
               {totalProgress.current} / {totalProgress.total} total
             </div>
         
-        <div className="flex-1 relative min-h-[400px]">
+        <div className="flex-1 relative min-h-[300px] sm:min-h-[400px]">
           {currentActivity && (
             <SwipeCard
               activity={currentActivity}

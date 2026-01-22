@@ -61,7 +61,11 @@ export const stringsEn = {
     completed: 'completed',
     start: 'Start',
     review: 'Review',
-    back: 'Back to Menu'
+    back: 'Back to Menu',
+    resetProgress: 'Reset Progress',
+    resetConfirm: 'Are you sure you want to reset all your progress? This action cannot be undone.',
+    resetCancel: 'Cancel',
+    resetConfirmBtn: 'Reset Everything'
   },
   categories: {
     basics: 'Basics',

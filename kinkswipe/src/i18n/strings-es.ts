@@ -63,7 +63,11 @@ export const stringsEs: Strings = {
     completed: 'completadas',
     start: 'Empezar',
     review: 'Revisar',
-    back: 'Volver al Menú'
+    back: 'Volver al Menú',
+    resetProgress: 'Reiniciar Progreso',
+    resetConfirm: '¿Estás seguro de que quieres reiniciar todo tu progreso? Esta acción no se puede deshacer.',
+    resetCancel: 'Cancelar',
+    resetConfirmBtn: 'Reiniciar Todo'
   },
   categories: {
     basics: 'Básicos',
