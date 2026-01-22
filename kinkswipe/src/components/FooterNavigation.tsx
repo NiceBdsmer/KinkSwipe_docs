@@ -18,7 +18,7 @@ export function FooterNavigation() {
     setScreen('welcome');
   };
 
-  if (currentScreen === 'welcome' || currentScreen === 'swipe') {
+  if (currentScreen === 'welcome' || currentScreen === 'onboarding' || currentScreen === 'category-selection' || currentScreen === 'swipe' || currentScreen === 'load') {
     return null;
   }
 
