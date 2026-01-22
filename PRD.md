@@ -68,6 +68,10 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [ ] Build onboarding step 3: safety disclaimer text with I Understand checkbox and continue button
 - [ ] Add navigation between steps with back button and progress dots indicator
 - [ ] On complete, save userMeta to store and navigate to SwipeScreen
+- [ ] Write unit tests for Welcome.tsx component
+- [ ] Write unit tests for Onboarding.tsx component
+- [ ] Write E2E tests for complete onboarding flow (role selection → experience → safety → swipe screen)
+- [ ] Run tests and lint, then merge to master
 
 ### Phase 5: Swipe Screen
 - [ ] Create src/screens/SwipeScreen.tsx with Header, SwipeCard stack, and ActionButtons
@@ -77,6 +81,10 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [ ] Add Skip Category button that marks all remaining activities in category as undefined and moves to next
 - [ ] When all categories complete in Give mode and userMeta.mode is both, show RoundComplete dialog asking to continue as Receiver
 - [ ] When all categories complete (or user declines second round), navigate to SummaryScreen
+- [ ] Write unit tests for SwipeScreen.tsx component
+- [ ] Write unit tests for swipe handler logic (direction to rating mapping)
+- [ ] Write E2E tests for complete swipe flow (all activities → category change → summary)
+- [ ] Run tests and lint, then merge to master
 
 ### Phase 6: Summary Screen
 - [ ] Create src/screens/SummaryScreen.tsx with global stats panel and category accordion
@@ -85,6 +93,10 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [ ] Inside each accordion item, show 4 lists grouped by rating: YES activities, MAYBE activities, MEH activities, NOPE activities
 - [ ] Add floating action buttons for: Copy Link, Copy Text, Download Image, Add Custom
 - [ ] If mode was Both, show tabs or toggle to switch between viewing Give ratings and Receive ratings
+- [ ] Write unit tests for SummaryScreen.tsx component
+- [ ] Write unit tests for category accordion expansion/collapse logic
+- [ ] Write E2E tests for summary display (all activities grouped correctly)
+- [ ] Run tests and lint, then merge to master
 
 ### Phase 7: Share and Export
 - [ ] Create src/utils/generateShareLink.ts that builds URL with encoded payload as query param d
@@ -94,6 +106,9 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [ ] Implement Copy Text button that copies the text summary to clipboard
 - [ ] Create src/utils/exportImage.ts using html2canvas to capture summary view as PNG
 - [ ] Implement Download Image button that triggers PNG download with filename kinkswipe-results.png
+- [ ] Write unit tests for generateShareLink.ts, exportText.ts, exportImage.ts
+- [ ] Write integration tests for share/export flow (encode → clipboard/download)
+- [ ] Run tests and lint, then merge to master
 
 ### Phase 8: Load From Link
 - [ ] Create src/screens/LoadFromLink.tsx with text input for pasting a share link
@@ -101,6 +116,10 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [ ] Validate decoded data has correct version and structure before loading
 - [ ] Display loaded data in read-only SummaryScreen variant with banner showing This is someone elses list
 - [ ] Add button to Start your own that clears loaded data and goes to onboarding
+- [ ] Write unit tests for LoadFromLink.tsx component
+- [ ] Write integration tests for URL parsing and payload validation
+- [ ] Write E2E tests for load from link flow (valid URL → load → start own)
+- [ ] Run tests and lint, then merge to master
 
 ### Phase 9: Custom Categories and Activities
 - [ ] Create src/components/AddCategoryDialog.tsx with form: category name input and save button
@@ -108,13 +127,17 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [ ] Add custom categories and activities to store.customCategories array
 - [ ] Include custom categories in swipe flow after built-in categories
 - [ ] Include custom data in share payload encoding
+- [ ] Write unit tests for AddCategoryDialog.tsx and AddActivityDialog.tsx
+- [ ] Write integration tests for custom categories/activities (create → swipe → share)
+- [ ] Run tests and lint, then merge to master
 
 ### Phase 10: Polish and Deploy
 - [ ] Add loading skeleton components for async operations
 - [ ] Add subtle animations for card enter/exit using Framer Motion
 - [ ] Add haptic feedback on swipe using navigator.vibrate when available
-- [ ] Test complete flow: Welcome to Onboarding to Swipe to Summary to Share
-- [ ] Test Load From Link flow with valid and invalid URLs
+- [ ] Write unit tests for skeleton components
+- [ ] Write E2E tests for complete flow: Welcome to Onboarding to Swipe to Summary to Share
+- [ ] Write E2E tests for Load From Link flow with valid and invalid URLs
 - [ ] Test on mobile devices for swipe gesture responsiveness
 - [ ] Create vercel.json with rewrites rule to serve index.html for all routes
 - [ ] Deploy to Vercel and verify production build works correctly
