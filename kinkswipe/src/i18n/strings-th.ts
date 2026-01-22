@@ -3,66 +3,66 @@ import type { Strings } from './strings-en';
 export const stringsTh: Strings = {
   welcome: {
     title: 'KinkSwipe',
-    tagline: 'Discover your preferences together',
-    startSwiping: 'Start Swiping',
-    loadLink: 'Load Link'
+    tagline: 'ค้นพบความชอบของคุณด้วยกัน',
+    startSwiping: 'เริ่มการเลื่อน',
+    loadLink: 'โหลดลิงก์'
   },
   onboarding: {
-    roleTitle: 'How do you want to explore?',
-    roleGiver: 'As Giver',
-    roleReceiver: 'As Receiver',
-    roleBoth: 'Both',
-    experienceTitle: 'What is your experience level?',
-    experienceNewbie: 'Newbie',
-    experienceCurious: 'Curious',
-    experienceExperienced: 'Experienced',
-    safetyTitle: 'Safety First',
-    safetyText: 'Kink activities can carry physical and emotional risks. Always communicate clearly, respect boundaries, and practice safer sex techniques.',
-    safetyAgree: 'I understand and agree',
-    back: 'Back',
-    continue: 'Continue'
+    roleTitle: 'คุณต้องการสำรวจอย่างไร?',
+    roleGiver: 'ในฐานะผู้ให้',
+    roleReceiver: 'ในฐานะผู้รับ',
+    roleBoth: 'ทั้งคู่',
+    experienceTitle: 'ระดับประสบการณ์ของคุณคืออะไร?',
+    experienceNewbie: 'มือใหม่',
+    experienceCurious: 'อยากรู้อยากเห็น',
+    experienceExperienced: 'มีประสบการณ์',
+    safetyTitle: 'ความปลอดภัยก่อน',
+    safetyText: 'กิจกรรมทางเพศอาจมีความเสี่ยงต่อร่างกายและจิตใจ ควรสื่อสารอย่างชัดเคารพขอบเขต และใช้วิธีการป้องกันอย่างปลอดภัยเสมอ',
+    safetyAgree: 'ฉันเข้าใจและเห็นด้วย',
+    back: 'กลับ',
+    continue: 'ดำเนินการต่อ'
   },
   swipe: {
-    yes: 'YES',
-    maybe: 'MAYBE',
-    meh: 'MEH',
-    nope: 'NOPE',
-    skipCategory: 'Skip Category',
+    yes: 'ชอบ',
+    maybe: 'อาจจะ',
+    meh: 'เฉยๆ',
+    nope: 'ไม่ชอบ',
+    skipCategory: 'ข้ามหมวดหมู่',
     roundComplete: {
-      title: 'Round Complete!',
-      message: 'You rated all activities as Giver. Want to continue as Receiver?',
-      yes: 'Continue',
-      no: 'View Summary'
+      title: 'เสร็จสิ้นรอบ!',
+      message: 'คุณให้คะแนนกิจกรรมทั้งหมดในฐานะผู้ให้ ต้องการดำเนินการต่อในฐานะผู้รับหรือไม่?',
+      yes: 'ดำเนินการต่อ',
+      no: 'ดูผลสรุป'
     }
   },
   summary: {
-    title: 'Your Results',
-    yesCount: 'You said YES to',
-    maybeCount: 'MAYBE to',
-    mehCount: 'MEH to',
-    nopeCount: 'NOPE to',
-    copyLink: 'Copy Link',
-    copyText: 'Copy Text',
-    downloadImage: 'Download Image',
-    addCustom: 'Add Custom',
-    readOnly: 'This is someone else’s list',
-    startOwn: 'Start your own',
-    give: 'As Giver',
-    receive: 'As Receiver'
+    title: 'ผลลัพธ์ของคุณ',
+    yesCount: 'คุณบอกชอบกับ',
+    maybeCount: 'อาจจะกับ',
+    mehCount: 'เฉยๆกับ',
+    nopeCount: 'ไม่ชอบกับ',
+    copyLink: 'คัดลอกลิงก์',
+    copyText: 'คัดลอกข้อความ',
+    downloadImage: 'ดาวน์โหลดรูปภาพ',
+    addCustom: 'เพิ่มแบบกำหนดเอง',
+    readOnly: 'นี่คือรายการของคนอื่น',
+    startOwn: 'เริ่มรายการของคุณเอง',
+    give: 'ในฐานะผู้ให้',
+    receive: 'ในฐานะผู้รับ'
   },
   edge: {
-    warning: 'High Risk Activity',
-    info: 'This activity carries significant physical or emotional risks. Requires proper knowledge, safety measures, and communication.'
+    warning: 'กิจกรรมเสี่ยงสูง',
+    info: 'กิจกรรมนี้มีความเสี่ยงต่อร่างกายและจิตใจอย่างมาก ต้องใช้ความรู้ ทักษะความปลอดภัย และการสื่อสารที่เหมาะสม'
   },
   categories: {
-    basics: 'Basics',
-    bondage: 'Bondage',
-    impact: 'Impact',
-    sensory: 'Sensory',
-    'power-exchange': 'Power Exchange',
-    edge: 'Edge Play',
-    sexual: 'Sexual',
-    fetishes: 'Fetishes',
-    humiliation: 'Humiliation'
+    basics: 'พื้นฐาน',
+    bondage: 'การผูกมัด',
+    impact: 'การกระทบ',
+    sensory: 'การรับรู้',
+    'power-exchange': 'การแลกเปลี่ยนอำนาจ',
+    edge: 'ขอบเขต',
+    sexual: 'ทางเพศ',
+    fetishes: 'ความหลงใหล',
+    humiliation: 'การดูถูก'
   }
 };

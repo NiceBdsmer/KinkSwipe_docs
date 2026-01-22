@@ -5,7 +5,7 @@ import { ActionButtons } from '../components/ActionButtons';
 import { Progress } from '../components/ui/progress';
 import { useAppStore } from '../store/useAppStore';
 import { categories } from '../data/categories';
-import { activitiesEn } from '../data/activities-en';
+import { getActivities } from '../utils/getActivities';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../components/ui/dialog';
 import { Button } from '../components/ui/button';
 import { useTranslation } from '../i18n/useTranslation';
@@ -13,13 +13,14 @@ import type { RatingValue } from '../types';
 
 export function SwipeScreen() {
   const t = useTranslation();
-  const { currentCategory, currentActivityIndex, ratings, userMeta, setScreen, setRating, setCurrentCategory, setCurrentActivityIndex } = useAppStore();
-  
+  const { currentCategory, currentActivityIndex, ratings, userMeta, setScreen, setRating, setCurrentCategory, setCurrentActivityIndex, lang } = useAppStore();
+
   const [showRoundComplete, setShowRoundComplete] = useState(false);
-  
+
   const currentMode: 'give' | 'receive' = userMeta.mode === 'both' ? 'give' : userMeta.mode;
-  
-  const categoryActivities = activitiesEn.filter(a => a.categoryId === currentCategory);
+
+  const activities = getActivities(lang);
+  const categoryActivities = activities.filter(a => a.categoryId === currentCategory);
   const currentActivity = categoryActivities[currentActivityIndex];
   
   const getCategoryProgress = () => {
@@ -28,7 +29,7 @@ export function SwipeScreen() {
   };
   
   const getTotalProgress = () => {
-    const totalActivities = activitiesEn.length;
+    const totalActivities = activities.length;
     const ratedCount = Object.keys(ratings[currentMode] ?? {}).length;
     return { current: ratedCount, total: totalActivities };
   };

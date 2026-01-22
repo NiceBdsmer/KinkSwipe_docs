@@ -4,6 +4,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/t
 import { AlertTriangle } from 'lucide-react';
 import type { ActivityDef } from '../types';
 import { useTranslation } from '../i18n/useTranslation';
+import { useAppStore } from '../store/useAppStore';
+import { getActivityText } from '../utils/getActivities';
 
 interface SwipeCardProps {
   activity: ActivityDef;
@@ -13,6 +15,8 @@ interface SwipeCardProps {
 export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
   const isEdge = activity.edge ?? false;
   const t = useTranslation();
+  const { lang } = useAppStore();
+  const activityText = getActivityText(activity, lang);
 
   return (
     <TinderCard
@@ -48,10 +52,10 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
         </CardHeader>
         <CardContent className="flex flex-col items-center justify-center h-full gap-4 pt-6">
           <h2 className="text-3xl font-bold text-center">
-            {activity.texts.en.text}
+            {activityText.text}
           </h2>
           <p className="text-center text-muted-foreground max-w-md">
-            {activity.texts.en.desc}
+            {activityText.desc}
           </p>
         </CardContent>
       </Card>
