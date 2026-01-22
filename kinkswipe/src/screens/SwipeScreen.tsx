@@ -91,7 +91,7 @@ export function SwipeScreen() {
       const categoryPercent = (categoryProgress.current / categoryProgress.total) * 100;
       
       return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col safe-area-inset">
       <Header 
         onBack={() => setScreen('welcome')}
         extraActions={

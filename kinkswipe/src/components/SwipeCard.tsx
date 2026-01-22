@@ -20,6 +20,7 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
 
   return (
     <TinderCard
+      className="absolute inset-0 w-full h-full"
       onSwipe={(direction) => {
         if (direction === 'up') onSwipe('up');
         else if (direction === 'right') onSwipe('right');

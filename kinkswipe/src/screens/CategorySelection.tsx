@@ -83,8 +83,8 @@ export function CategorySelection() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <div className="px-4 py-4 sm:py-6 max-w-6xl mx-auto w-full lg:max-w-5xl xl:max-w-4xl 2xl:max-w-3xl">
+    <div className="min-h-screen bg-background flex flex-col safe-area-inset">
+      <div className="flex-1 px-4 py-4 sm:py-6 max-w-6xl mx-auto w-full lg:max-w-5xl xl:max-w-4xl 2xl:max-w-3xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2">{t.categorySelection?.title || 'Choose Your Path'}</h1>
           <p className="text-muted-foreground mb-4">
