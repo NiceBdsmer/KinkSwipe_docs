@@ -68,10 +68,10 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [x] Build onboarding step 3: safety disclaimer text with I Understand checkbox and continue button
 - [x] Add navigation between steps with back button and progress dots indicator
 - [x] On complete, save userMeta to store and navigate to SwipeScreen
-- [ ] Write unit tests for Welcome.tsx component
+- [x] Write unit tests for Welcome.tsx component
 - [x] Write unit tests for Onboarding.tsx component
-- [ ] Write E2E tests for complete onboarding flow (role selection → experience → safety → swipe screen)
-- [ ] Run tests and lint, then merge to master
+- [x] Write E2E tests for complete onboarding flow (role selection → experience → safety → swipe screen)
+- [x] Run tests and lint, then merge to master
 
 ### Phase 5: Swipe Screen
 - [ ] Create src/screens/SwipeScreen.tsx with Header, SwipeCard stack, and ActionButtons
