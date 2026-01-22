@@ -531,3 +531,63 @@ src/
 ---
 
 Este documento sirve como **Biblia / God Doc** para el proyecto KinkSwipe: define visión, UX, features, arquitectura técnica, i18n y roadmap para que cualquier desarrollador (o agente de automatización tipo Ralphy) pueda entender y construir el MVP y las siguientes iteraciones.
+
+---
+
+## 11. Estado de Implementación (Actualizado 2026-01-22)
+
+### 11.1. Features Implementadas ✅
+
+#### Mobile-First Interface & Interaction Overhaul
+- **US-001: Fix Mobile Viewport Layout** ✅
+  - Contenedor principal con `overflow-x: hidden` para prevenir scroll horizontal
+  - Safe-area margins implementadas para dispositivos con notch
+  - Card stack centrado dinámicamente para diferentes anchos de pantalla
+  - Verificado en viewports pequeños (iPhone SE) y grandes
+  - Validado: `npm run typecheck` y `npm run lint` pasan
+
+- **US-002: Implement 4-Directional Swipe Logic** ✅
+  - Left Swipe → "No" (Reject)
+  - Right Swipe → "Yes" (Like/Accept)
+  - Up Swipe → "Maybe" (Details/Super Like)
+  - Down Swipe → "Skip" (Dismiss/Next)
+  - Visual feedback implementado (rotación/opacity) durante gestos de arrastre
+  - Threshold de swipe configurado para prevenir activaciones accidentales
+  - Validado: `npm run typecheck` y `npm run lint` pasan
+
+- **US-003: Add Onboarding Tutorial Card** ✅
+  - Card de tutorial visual que muestra las 4 direcciones de swipe
+  - Insertado como primer item en el stack de cartas
+  - Comportamiento como carta normal (requiere swipe para descartar)
+  - Lógica para mostrar solo una vez por usuario/instalación
+  - Validado: `npm run typecheck` y `npm run lint` pasan
+
+- **US-004: Create Persistent Footer Navigation** ✅
+  - Footer sticky fijo al bottom del viewport
+  - Botón "Home" que navega a la landing page
+  - Botón "Reset All" que reinicia la sesión/stack actual
+  - z-index configurado para mantenerlo visible sin obscurir contenido
+  - Validado: `npm run typecheck` y `npm run lint` pasan
+
+### 11.2. Commits de Implementación
+
+La implementación se encuentra en la rama `master` con los siguientes commits:
+
+1. `29b698d` - feat: US-001 - Fix Mobile Viewport Layout
+2. `ac420eb` - feat: US-002 - Implement 4-Directional Swipe Logic
+3. `a41504a` - feat: US-003 - Add Onboarding Tutorial Card
+4. `1953a6f` - feat: US-004 - Create Persistent Footer Navigation
+
+### 11.3. Próximos Pasos Pendientes
+
+- Implementar flujo completo Welcome → Onboarding → Swipe → Summary
+- Integrar `react-tinder-card` con estados de swipe (parcialmente implementado)
+- Guardar progreso en Zustand + `localStorage`
+- Implementar `encodePayload` / `decodePayload` con `lz-string`
+- Crear botones de "Copy link" y "Copy text summary"
+- Crear `exportImage` para PNG de resumen
+- Integrar dataset de categorías/actividades completo
+- Añadir tooltips de seguridad para edge play
+- Implementar traducciones ES y TH
+- Implementar pantalla de comparación (dos payloads)
+- Generar QR para compartir link propio
