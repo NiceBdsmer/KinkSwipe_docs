@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import TinderCard from 'react-tinder-card';
 import { Card, CardHeader, CardContent } from './ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
@@ -17,11 +18,19 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
   const t = useTranslation();
   const { lang } = useAppStore();
   const activityText = getActivityText(activity, lang);
+  const [activeDirection, setActiveDirection] = useState<string | null>(null);
 
   return (
     <TinderCard
       className="absolute inset-0 w-full h-full"
+      swipeRequirementType="position"
+      swipeThreshold={100}
+      preventSwipe={[]}
+      onSwipeRequirementFulfilled={(direction) => setActiveDirection(direction)}
+      onSwipeRequirementUnfulfilled={() => setActiveDirection(null)}
+      onCardLeftScreen={() => setActiveDirection(null)}
       onSwipe={(direction) => {
+        setActiveDirection(null);
         if (direction === 'up') onSwipe('up');
         else if (direction === 'right') onSwipe('right');
         else if (direction === 'down') onSwipe('down');
@@ -60,16 +69,24 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
           </p>
         </CardContent>
       </Card>
-      <div className="absolute top-4 left-4 -translate-x-1/2 -translate-y-1/2 rotate-[-12deg] text-red-600 text-4xl font-black opacity-0 pointer-events-none transition-opacity">
+      <div 
+        className={`absolute top-4 left-4 -translate-x-1/2 -translate-y-1/2 rotate-[-12deg] text-red-600 text-4xl font-black pointer-events-none transition-opacity ${activeDirection === 'left' ? 'opacity-100' : 'opacity-0'}`}
+      >
         {t.swipe.nope}
       </div>
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[12deg] text-green-600 text-4xl font-black opacity-0 pointer-events-none transition-opacity">
+      <div 
+        className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[12deg] text-green-600 text-4xl font-black pointer-events-none transition-opacity ${activeDirection === 'right' ? 'opacity-100' : 'opacity-0'}`}
+      >
         {t.swipe.yes}
       </div>
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 -rotate-12deg text-gray-600 text-4xl font-black opacity-0 pointer-events-none transition-opacity">
+      <div 
+        className={`absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 -rotate-12deg text-gray-600 text-4xl font-black pointer-events-none transition-opacity ${activeDirection === 'down' ? 'opacity-100' : 'opacity-0'}`}
+      >
         {t.swipe.meh}
       </div>
-      <div className="absolute top-1/4 right-1/4 translate-x-1/2 -translate-y-1/2 rotate-[12deg] text-blue-600 text-4xl font-black opacity-0 pointer-events-none transition-opacity">
+      <div 
+        className={`absolute top-1/4 right-1/4 translate-x-1/2 -translate-y-1/2 rotate-[12deg] text-blue-600 text-4xl font-black pointer-events-none transition-opacity ${activeDirection === 'up' ? 'opacity-100' : 'opacity-0'}`}
+      >
         {t.swipe.maybe}
       </div>
     </TinderCard>
