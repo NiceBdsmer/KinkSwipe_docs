@@ -32,7 +32,7 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [x] Add shadcn components: button, card, dialog, accordion, tooltip, progress, select, checkbox
 - [x] Create folder structure: src/components, src/screens, src/store, src/data, src/utils, src/i18n, src/types
 - [x] Create src/types/index.ts with TypeScript types: RatingValue, UserMode, ExperienceLevel, UserState, ActivityDef, CategoryDef, CustomCategory
-- [ ] Configure Vercel deployment by creating vercel.json with rewrites for SPA routing
+- [x] Configure Vercel deployment by creating vercel.json with rewrites for SPA routing
 
 ### Phase 1: Data Layer
 - [x] Create src/data/categories.ts with CategoryDef array containing 8 categories: bondage, impact, sensory, power-exchange, edge, sexual, fetishes, humiliation

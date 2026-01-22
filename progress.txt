@@ -11,3 +11,4 @@
 2026-01-22: Created src/utils/encodePayload.ts and src/utils/decodePayload.ts with lz-string. Tests pass.
 2026-01-22: Completed Phase 2: Created i18n strings (en, es, th), useTranslation hook, and LanguageSwitcher component. Tests pass.
 2026-01-22: Completed Phase 3: Created all core components - Header, SwipeCard, ActionButtons, CategoryProgress, EdgeWarning, SummaryCard. Tests pass.
+2026-01-22: Completed Phase 0: Created vercel.json with SPA routing rewrites for Vercel deployment.
