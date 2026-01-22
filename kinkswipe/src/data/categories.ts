@@ -1,6 +1,7 @@
 import type { CategoryDef } from '../types';
 
 export const categories: CategoryDef[] = [
+  { id: 'basics' },
   { id: 'bondage' },
   { id: 'impact' },
   { id: 'sensory' },

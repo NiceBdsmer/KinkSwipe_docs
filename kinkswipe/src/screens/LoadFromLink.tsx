@@ -35,18 +35,18 @@ export function LoadFromLink() {
 
       // Validate the decoded data has expected structure
       if (!decodedData || typeof decodedData !== 'object') {
-        throw new Error('Invalid payload format');
+        throw new Error('Invalid share link format. Please check the URL and try again.');
       }
 
       if (!decodedData.ratings || !decodedData.userMeta) {
-        throw new Error('Missing required data fields');
+        throw new Error('This share link is missing required data. It may be corrupted.');
       }
 
       setLoadedData(decodedData);
       setLoadState('loaded');
     } catch (err) {
       console.error('Failed to decode payload:', err);
-      setError(err instanceof Error ? err.message : 'Failed to load data');
+      setError(err instanceof Error ? err.message : 'Failed to load data from this link');
       setLoadState('error');
     }
   };

@@ -55,6 +55,7 @@ export const stringsEs: Strings = {
     info: 'Esta actividad conlleva riesgos físicos o emocionales significativos. Requiere conocimiento adecuado, medidas de seguridad y comunicación.'
   },
   categories: {
+    basics: 'Básicos',
     bondage: 'Bondage',
     impact: 'Impacto',
     sensory: 'Sensorial',

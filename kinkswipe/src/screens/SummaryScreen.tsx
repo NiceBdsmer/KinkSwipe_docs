@@ -6,7 +6,7 @@ import { useTranslation } from '../i18n/useTranslation';
 import { SummaryCard } from '../components/SummaryCard';
 import { Button } from '../components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
-import { Users, UserRound, Link, FileText, Download, Plus } from 'lucide-react';
+import { Users, UserRound, Link, FileText, Download, Plus, ArrowLeft } from 'lucide-react';
 import { generateShareLink } from '../utils/generateShareLink';
 import { exportText } from '../utils/exportText';
 import { exportImage } from '../utils/exportImage';
@@ -15,8 +15,9 @@ type RatingMode = 'give' | 'receive';
 
 export function SummaryScreen() {
   const t = useTranslation();
-  const { ratings, userMeta } = useAppStore();
+  const { ratings, userMeta, setScreen } = useAppStore();
   const summaryRef = useRef<HTMLDivElement>(null);
+  const [error, setError] = useState<string>('');
 
   const [currentMode, setCurrentMode] = useState<RatingMode>(() => {
     if (userMeta.mode === 'both') return 'give';
@@ -27,6 +28,7 @@ export function SummaryScreen() {
 
   const handleCopyLink = async () => {
     try {
+      setError('');
       const link = generateShareLink({
         ratings,
         userMeta,
@@ -51,35 +53,40 @@ export function SummaryScreen() {
       // TODO: Show success toast
     } catch (error) {
       console.error('Failed to share link:', error);
-      // TODO: Show error toast
+      setError('Failed to share link. Please try again.');
     }
   };
 
   const handleCopyText = async () => {
     try {
+      setError('');
       const text = exportText(ratings);
       await navigator.clipboard.writeText(text);
       // TODO: Show success toast
     } catch (error) {
       console.error('Failed to copy text:', error);
-      // TODO: Show error toast
+      setError('Failed to copy text to clipboard. Please try again.');
     }
   };
 
   const handleDownloadImage = async () => {
-    if (!summaryRef.current) return;
+    if (!summaryRef.current) {
+      setError('Unable to generate image. Please refresh and try again.');
+      return;
+    }
     try {
+      setError('');
       await exportImage(summaryRef.current);
       // TODO: Show success toast
     } catch (error) {
       console.error('Failed to download image:', error);
-      // TODO: Show error toast
+      setError('Failed to download image. Please try again.');
     }
   };
 
   const handleAddCustom = () => {
+    setError('Custom categories are not yet available. Coming soon!');
     // TODO: Implement custom category/activity dialog
-    console.log('Add custom clicked');
   };
 
   const currentRatings = ratings[currentMode as keyof typeof ratings];
@@ -132,6 +139,27 @@ export function SummaryScreen() {
 
   return (
     <div ref={summaryRef} className="min-h-screen bg-background flex flex-col items-center p-4">
+      {/* Back Button */}
+      <div className="w-full max-w-2xl mb-4">
+        <Button
+          variant="ghost"
+          onClick={() => setScreen('welcome')}
+          className="flex items-center gap-2"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Start
+        </Button>
+      </div>
+
+      {/* Error Display */}
+      {error && (
+        <div className="w-full max-w-2xl mb-4">
+          <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-md">
+            <p className="text-sm">{error}</p>
+          </div>
+        </div>
+      )}
+
       <div className="w-full max-w-2xl space-y-6">
         {showToggle && (
           <div className="flex gap-2 bg-muted p-1 rounded-lg">

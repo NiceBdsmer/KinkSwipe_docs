@@ -2,12 +2,13 @@ import { describe, it, expect } from 'vitest';
 import { categories } from './categories';
 
 describe('categories', () => {
-  it('should contain 8 categories', () => {
-    expect(categories.length).toBe(8);
+  it('should contain 9 categories', () => {
+    expect(categories.length).toBe(9);
   });
 
   it('should contain the required category IDs', () => {
     const requiredIds = [
+      'basics',
       'bondage',
       'impact',
       'sensory',

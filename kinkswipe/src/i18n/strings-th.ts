@@ -55,6 +55,7 @@ export const stringsTh: Strings = {
     info: 'This activity carries significant physical or emotional risks. Requires proper knowledge, safety measures, and communication.'
   },
   categories: {
+    basics: 'Basics',
     bondage: 'Bondage',
     impact: 'Impact',
     sensory: 'Sensory',

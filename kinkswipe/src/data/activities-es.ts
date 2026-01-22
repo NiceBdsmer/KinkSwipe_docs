@@ -1,6 +1,88 @@
 import type { ActivityDef } from '../types';
 
 export const activitiesEs: ActivityDef[] = [
+  // --- BASICS ---
+  {
+    id: 'kissing',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Kissing', desc: 'Romantic or passionate kissing, ranging from gentle pecks to deep, intense kisses.' },
+      es: { text: 'Besar', desc: 'Besos románticos o apasionados, desde piquitos suaves hasta besos profundos e intensos.' }
+    }
+  },
+  {
+    id: 'cuddling',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Cuddling', desc: 'Holding each other close, embracing, and physical closeness for comfort and intimacy.' },
+      es: { text: 'Abrazar', desc: 'Abrazarse, acurrucarse y proximidad física para comodidad e intimidad.' }
+    }
+  },
+  {
+    id: 'sensual-massage',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Sensual Massage', desc: 'Using hands to rub and relax muscles in an intimate, sensual way.' },
+      es: { text: 'Masaje Sensual', desc: 'Usar las manos para frotar y relajar los músculos de manera íntima y sensual.' }
+    }
+  },
+  {
+    id: 'basic-oral-sex',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Oral Sex', desc: 'Using mouth and tongue to stimulate genitals.' },
+      es: { text: 'Sexo Oral', desc: 'Usar boca y lengua para estimular los genitales.' }
+    }
+  },
+  {
+    id: 'intercourse',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Sexual Intercourse', desc: 'Penetrative sex with penis, fingers, or toys.' },
+      es: { text: 'Relaciones Sexuales', desc: 'Sexo penetrativo con pene, dedos o juguetes.' }
+    }
+  },
+  {
+    id: 'manual-stimulation',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Manual Stimulation', desc: 'Using hands to stimulate genitals or erogenous zones.' },
+      es: { text: 'Estimulación Manual', desc: 'Usar las manos para estimular genitales o zonas erógenas.' }
+    }
+  },
+  {
+    id: 'basic-dirty-talk',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Dirty Talk', desc: 'Verbal communication during intimacy, expressing desires or fantasies.' },
+      es: { text: 'Hablar Sucio', desc: 'Comunicación verbal durante la intimidad, expresando deseos o fantasías.' }
+    }
+  },
+  {
+    id: 'role-playing',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Role Playing', desc: 'Acting out scenarios or fantasies together.' },
+      es: { text: 'Juegos de Rol', desc: 'Representar escenarios o fantasías juntos.' }
+    }
+  },
+  {
+    id: 'public-display',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Public Display of Affection', desc: 'Showing affection in public, like holding hands or kissing.' },
+      es: { text: 'Demostración Pública de Afecto', desc: 'Mostrar afecto en público, como tomarse de la mano o besarse.' }
+    }
+  },
+  {
+    id: 'watching-porn',
+    categoryId: 'basics',
+    texts: {
+      en: { text: 'Watching Porn Together', desc: 'Viewing adult content as a couple.' },
+      es: { text: 'Ver Pornografía Juntos', desc: 'Ver contenido para adultos como pareja.' }
+    }
+  },
+
   // --- BONDAGE ---
   {
     id: 'rope-bondage',
