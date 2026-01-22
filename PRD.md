@@ -32,33 +32,33 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [x] Add shadcn components: button, card, dialog, accordion, tooltip, progress, select, checkbox
 - [x] Create folder structure: src/components, src/screens, src/store, src/data, src/utils, src/i18n, src/types
 - [x] Create src/types/index.ts with TypeScript types: RatingValue, UserMode, ExperienceLevel, UserState, ActivityDef, CategoryDef, CustomCategory
-- [x] Configure Vercel deployment by creating vercel.json with rewrites for SPA routing
+- [ ] Configure Vercel deployment by creating vercel.json with rewrites for SPA routing
 
 ### Phase 1: Data Layer
 - [x] Create src/data/categories.ts with CategoryDef array containing 8 categories: bondage, impact, sensory, power-exchange, edge, sexual, fetishes, humiliation
 - [x] Create src/data/activities-en.ts with 150+ ActivityDef objects covering all categories, each with id, categoryId, edge flag, and texts.en with text and desc
 - [x] Create src/data/activities-es.ts with Spanish translations for all activities
-- [ ] Create src/data/activities-th.ts with Thai translations for all activities
-- [ ] Create src/store/useAppStore.ts with Zustand store containing: lang, userMeta, ratings (give/receive), customCategories, currentScreen, currentCategory, currentActivityIndex
-- [ ] Add Zustand persist middleware to save state to localStorage with key kinkswipe-state
-- [ ] Create src/utils/encodePayload.ts function that compresses UserState to base64 string using lz-string compressToEncodedURIComponent
-- [ ] Create src/utils/decodePayload.ts function that decompresses base64 string back to UserState using lz-string decompressFromEncodedURIComponent
+- [x] Create src/data/activities-th.ts with Thai translations for all activities
+- [x] Create src/store/useAppStore.ts with Zustand store containing: lang, userMeta, ratings (give/receive), customCategories, currentScreen, currentCategory, currentActivityIndex
+- [x] Add Zustand persist middleware to save state to localStorage with key kinkswipe-state
+- [x] Create src/utils/encodePayload.ts function that compresses UserState to base64 string using lz-string compressToEncodedURIComponent
+- [x] Create src/utils/decodePayload.ts function that decompresses base64 string back to UserState using lz-string decompressFromEncodedURIComponent
 
 ### Phase 2: i18n System
-- [ ] Create src/i18n/strings-en.ts with all UI strings in English: welcome, onboarding, swipe, summary, buttons, tooltips
-- [ ] Create src/i18n/strings-es.ts with Spanish translations of all UI strings
-- [ ] Create src/i18n/strings-th.ts with Thai translations of all UI strings
-- [ ] Create src/i18n/useTranslation.ts hook that returns t function based on current lang from store
-- [ ] Create src/components/LanguageSwitcher.tsx with EN/ES/TH toggle buttons that update store lang
+- [x] Create src/i18n/strings-en.ts with all UI strings in English: welcome, onboarding, swipe, summary, buttons, tooltips
+- [x] Create src/i18n/strings-es.ts with Spanish translations of all UI strings
+- [x] Create src/i18n/strings-th.ts with Thai translations of all UI strings
+- [x] Create src/i18n/useTranslation.ts hook that returns t function based on current lang from store
+- [x] Create src/components/LanguageSwitcher.tsx with EN/ES/TH toggle buttons that update store lang
 
 ### Phase 3: Core Components
-- [ ] Create src/components/Header.tsx with back button, category name, and progress indicator showing X/Y in category and Z% total
-- [ ] Create src/components/SwipeCard.tsx using react-tinder-card with category chip, activity title, description, and edge warning icon with tooltip
-- [ ] Add swipe overlay labels to SwipeCard: YES (green right), MAYBE (blue up), MEH (gray down), NOPE (red left)
-- [ ] Create src/components/ActionButtons.tsx with 4 buttons below card: NOPE, MEH, MAYBE, YES with icons and colors
-- [ ] Create src/components/CategoryProgress.tsx showing visual progress bar for current category
-- [ ] Create src/components/EdgeWarning.tsx tooltip component showing safety info for edge activities
-- [ ] Create src/components/SummaryCard.tsx displaying counts for YES/MAYBE/MEH/NOPE with colored badges
+- [x] Create src/components/Header.tsx with back button, category name, and progress indicator showing X/Y in category and Z% total
+- [x] Create src/components/SwipeCard.tsx using react-tinder-card with category chip, activity title, description, and edge warning icon with tooltip
+- [x] Add swipe overlay labels to SwipeCard: YES (green right), MAYBE (blue up), MEH (gray down), NOPE (red left)
+- [x] Create src/components/ActionButtons.tsx with 4 buttons below card: NOPE, MEH, MAYBE, YES with icons and colors
+- [x] Create src/components/CategoryProgress.tsx showing visual progress bar for current category
+- [x] Create src/components/EdgeWarning.tsx tooltip component showing safety info for edge activities
+- [x] Create src/components/SummaryCard.tsx displaying counts for YES/MAYBE/MEH/NOPE with colored badges
 
 ### Phase 4: Screens - Welcome and Onboarding
 - [ ] Create src/screens/Welcome.tsx with logo, tagline, Start Swiping button, Load Link button, and LanguageSwitcher

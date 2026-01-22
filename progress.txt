@@ -5,3 +5,9 @@
 2026-01-21: Completed Phase 1 task: Create src/data/categories.ts with 8 defined categories. Installed vitest for testing.
 2026-01-21: Completed Phase 1 task: Create src/data/activities-en.ts with ~150 activities. Verified with tests.
 2026-01-21: Completed Phase 1 task: Create src/data/activities-es.ts with Spanish translations for all activities. Verified with tests.
+2026-01-21: Added src/data/activities-th.ts using English placeholders for Thai translation.
+2026-01-21: Completed Phase 1 task: Create src/store/useAppStore.ts with Zustand store and defaults.
+2026-01-21: Completed Phase 1 task: Add Zustand persist middleware with kinkswipe-state key.
+2026-01-22: Created src/utils/encodePayload.ts and src/utils/decodePayload.ts with lz-string. Tests pass.
+2026-01-22: Completed Phase 2: Created i18n strings (en, es, th), useTranslation hook, and LanguageSwitcher component. Tests pass.
+2026-01-22: Completed Phase 3: Created all core components - Header, SwipeCard, ActionButtons, CategoryProgress, EdgeWarning, SummaryCard. Tests pass.

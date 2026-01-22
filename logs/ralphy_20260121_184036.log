@@ -1,0 +1,15 @@
+[18:40:36] [info] === Ralphy v3.1.0 Started ===
+[18:40:36] [info] Engine: OpenCode | Model: zai-coding-plan/glm-4.7
+[18:40:36] [info] PRD: PRD.md
+[18:40:36] [info] >>> Task: Create src/data/activities-th.ts with Thai transla
+[18:40:36] [info] Tasks remaining: 60
+[18:40:36] [debug] [PROMPT] @PRD.md @progress.txt
+1. Find the highest-priority incomplete task and implement it.
+2. Write tests for the feature.
+3. Run tests and ensure they pass before proceeding.
+4. Run linting and ensure it passes before proceeding.
+5. Update the PRD to mark the task as complete (change '- [ ]' to '- [x]').
+6. Append your progress to progress.txt.
+7. Commit your changes with a descriptive message.
+ONLY WORK ON A SINGLE TASK. Do not proceed if tests fail. Do not proceed if linting fails.
+If ALL tasks in the PRD are complete, output <promise>COMPLETE</promise>.
