@@ -62,7 +62,7 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 
 ### Phase 4: Screens - Welcome and Onboarding
 - [x] Create src/screens/Welcome.tsx with logo, tagline, Start Swiping button, Load Link button, and LanguageSwitcher
-- [x] Create src/screens/Onboarding.tsx as multi-step wizard with 4 steps using local state
+- [x] Create src/screens/Onboarding.tsx as multi-step wizard with 3 steps using local state
 - [x] Build onboarding step 1: role selection with 3 cards - As Giver, As Receiver, Both (two rounds)
 - [x] Build onboarding step 2: experience level with 3 options - Newbie, Curious, Experienced
 - [x] Build onboarding step 3: safety disclaimer text with I Understand checkbox and continue button
@@ -139,5 +139,5 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [ ] Write E2E tests for complete flow: Welcome to Onboarding to Swipe to Summary to Share
 - [ ] Write E2E tests for Load From Link flow with valid and invalid URLs
 - [ ] Test on mobile devices for swipe gesture responsiveness
-- [ ] Create vercel.json with rewrites rule to serve index.html for all routes
+- [x] Create vercel.json with rewrites rule to serve index.html for all routes
 - [ ] Deploy to Vercel and verify production build works correctly
