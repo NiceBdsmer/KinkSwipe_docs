@@ -19,7 +19,8 @@ https://kinkswipe.vercel.app
 - ✅ **Safety warnings** - Tooltips for edge activities
 - ✅ **Multi-language** - English (EN), Spanish (ES), Thai (TH)
 - ✅ **Mobile-first design** - Optimized for touch gestures
-- ✅ **Dark mode default** - Playful & sexy aesthetic
+- ✅ **Intro start page** - Consent-first explanation and flow entry points
+- ✅ **Dark mode default** - Neon glass aesthetic
 
 ### Summary & Export
 - ✅ **Visual summary** - Total counts and per-category breakdown
@@ -48,18 +49,19 @@ https://kinkswipe.vercel.app
 
 ## 📱 Screen Flow
 
-1. **Welcome** - Start swiping, load link, select language
-2. **Onboarding** - Role → Experience → Safety
-3. **Swipe** - Rate activities by category
-4. **Summary** - View results and export
-5. **Load From Link** - View someone else's list
+1. **Start** - What the app is + safe intro
+2. **Welcome** - Continue where you left off
+3. **Onboarding** - Role → Experience → Safety
+4. **Swipe** - Rate activities by category
+5. **Summary** - View results and export
+6. **Load From Link** - View someone else's list
 
 ## 🎨 Design Principles
 
 - 🔒 **Privacy First** - 100% client-side, no data sent to servers
 - 📱 **Mobile-First** - Touch-optimized, large tap targets, vertical layout
 - 🌈 **Inclusive & Non-judgmental** - Neutral language, flexible roles
-- 🎮 **Playful but Responsible** - Sexy aesthetic, safety warnings for edge activities
+- 🎮 **Playful but Responsible** - Neon glass aesthetic with safety cues
 - 🌍 **Multi-language** - EN/ES/TH built from ground up
 
 ## 📦 Project Structure
@@ -76,6 +78,7 @@ kinkswipe/
 │   │   ├── SwipeCard.tsx
 │   │   └── TutorialCard.tsx
 │   ├── screens/          # Main screens
+│   │   ├── Start.tsx
 │   │   ├── Welcome.tsx
 │   │   ├── Onboarding.tsx
 │   │   ├── CategorySelection.tsx
@@ -148,12 +151,11 @@ npx tsc --noEmit
 
 ## 🔄 Recent Changes (2026-01-23)
 
-### Bug Fixes
-- ✅ Fixed tutorial card not loading actual activity after dismissal
-- ✅ Fixed activities-en.ts to properly import and export all category activities
-- ✅ Added loading state when activities are unavailable
-- ✅ Fixed footer button duplication on swipe screen
-- ✅ FooterNavigation now properly hidden on relevant screens
+### UI Refresh
+- ✅ Introduced neon glass visual system with custom typography
+- ✅ Added Start screen with app explanation and safe onboarding
+- ✅ Updated swipe controls to circular action orbs
+- ✅ Harmonized headers, cards, and progress styling
 
 ### Storage Improvements
 - ✅ **Phase 1**: Activities split by category into separate files
