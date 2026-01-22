@@ -22,6 +22,7 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
 
   return (
     <TinderCard
+      key={activity.id}
       className="absolute inset-0 w-full h-full"
       swipeRequirementType="position"
       swipeThreshold={100}

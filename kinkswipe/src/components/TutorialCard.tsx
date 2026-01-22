@@ -14,6 +14,7 @@ export function TutorialCard({ onSwipe }: TutorialCardProps) {
 
   return (
     <TinderCard
+      key="tutorial"
       className="absolute inset-0 w-full h-full"
       swipeRequirementType="position"
       swipeThreshold={100}
