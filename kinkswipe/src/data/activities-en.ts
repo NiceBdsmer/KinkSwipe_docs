@@ -1,15 +1,22 @@
 import type { ActivityDef } from '../types';
+import { activities as basics } from './activities-en/basics';
+import { activities as bondage } from './activities-en/bondage';
+import { activities as impact } from './activities-en/impact';
+import { activities as sensory } from './activities-en/sensory';
+import { activities as powerExchange } from './activities-en/power-exchange';
+import { activities as edge } from './activities-en/edge';
+import { activities as sexual } from './activities-en/sexual';
+import { activities as fetishes } from './activities-en/fetishes';
+import { activities as humiliation } from './activities-en/humiliation';
 
-export const activitiesEn: ActivityDef[] = [];
-
-export { activitiesEn as activities } from './activities-en';
-
-export const activitiesEnBasics: ActivityDef[] = [];
-export const activitiesEnBondage: ActivityDef[] = [];
-export const activitiesEnImpact: ActivityDef[] = [];
-export const activitiesEnSensory: ActivityDef[] = [];
-export const activitiesEnPowerExchange: ActivityDef[] = [];
-export const activitiesEnEdge: ActivityDef[] = [];
-export const activitiesEnSexual: ActivityDef[] = [];
-export const activitiesEnFetishes: ActivityDef[] = [];
-export const activitiesEnHumiliation: ActivityDef[] = [];
+export const activitiesEn: ActivityDef[] = [
+  ...basics,
+  ...bondage,
+  ...impact,
+  ...sensory,
+  ...powerExchange,
+  ...edge,
+  ...sexual,
+  ...fetishes,
+  ...humiliation
+];

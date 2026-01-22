@@ -18,7 +18,7 @@ export function FooterNavigation() {
     setScreen('welcome');
   };
 
-  if (currentScreen === 'welcome') {
+  if (currentScreen === 'welcome' || currentScreen === 'swipe') {
     return null;
   }
 

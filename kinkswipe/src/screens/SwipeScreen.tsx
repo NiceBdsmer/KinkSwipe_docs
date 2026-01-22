@@ -128,14 +128,20 @@ export function SwipeScreen() {
         <div className="flex-1 relative min-h-[300px] sm:min-h-[400px]">
           {showTutorial ? (
             <TutorialCard
+              key="tutorial"
               onSwipe={handleTutorialSwipe}
             />
           ) : currentActivity ? (
             <SwipeCard
+              key={currentActivity.id}
               activity={currentActivity}
               onSwipe={handleSwipe}
             />
-          ) : null}
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
+              Loading activities...
+            </div>
+          )}
         </div>
 
         {!showTutorial && (
