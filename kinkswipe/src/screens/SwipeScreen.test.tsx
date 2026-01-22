@@ -9,6 +9,7 @@ const mockSetScreen = vi.fn();
 const mockSetRating = vi.fn();
 const mockSetCurrentCategory = vi.fn();
 const mockSetCurrentActivityIndex = vi.fn();
+const mockSetTutorialSeen = vi.fn();
 
 const defaultStoreState = {
   currentCategory: categories[0].id,
@@ -22,14 +23,30 @@ const defaultStoreState = {
     experience: 'newbie' as const,
     agreedToTerms: true
   },
+  lang: 'en' as const,
+  tutorialSeen: true,
   setScreen: mockSetScreen,
   setRating: mockSetRating,
   setCurrentCategory: mockSetCurrentCategory,
-  setCurrentActivityIndex: mockSetCurrentActivityIndex
+  setCurrentActivityIndex: mockSetCurrentActivityIndex,
+  setTutorialSeen: mockSetTutorialSeen
 };
 
 vi.mock('../store/useAppStore', () => ({
   useAppStore: vi.fn()
+}));
+
+vi.mock('react-tinder-card', () => ({
+  default: ({ children, onSwipe }: { children: React.ReactNode; onSwipe: (direction: string) => void }) => {
+    return (
+      <div
+        data-testid="tinder-card"
+        onClick={() => onSwipe('right')}
+      >
+        {children}
+      </div>
+    );
+  }
 }));
 
 describe('SwipeScreen', () => {
@@ -59,9 +76,8 @@ describe('SwipeScreen', () => {
   it('should call setRating with yes on right swipe', async () => {
     render(<SwipeScreen />);
     
-    const buttons = screen.getAllByText(/YES/);
-    const yesButton = buttons.find(btn => btn.tagName === 'BUTTON');
-    fireEvent.click(yesButton!);
+    const yesButton = screen.getByRole('button', { name: /YES/i });
+    fireEvent.click(yesButton);
     
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'yes');
@@ -71,9 +87,8 @@ describe('SwipeScreen', () => {
   it('should call setRating with maybe on up swipe (maybe button)', async () => {
     render(<SwipeScreen />);
     
-    const buttons = screen.getAllByText(/MAYBE/);
-    const maybeButton = buttons.find(btn => btn.tagName === 'BUTTON');
-    fireEvent.click(maybeButton!);
+    const maybeButton = screen.getByRole('button', { name: /MAYBE/i });
+    fireEvent.click(maybeButton);
     
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'maybe');
@@ -83,9 +98,8 @@ describe('SwipeScreen', () => {
   it('should call setRating with meh on down swipe (meh button)', async () => {
     render(<SwipeScreen />);
     
-    const buttons = screen.getAllByText(/MEH/);
-    const mehButton = buttons.find(btn => btn.tagName === 'BUTTON');
-    fireEvent.click(mehButton!);
+    const mehButton = screen.getByRole('button', { name: /MEH/i });
+    fireEvent.click(mehButton);
     
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'meh');
@@ -95,9 +109,8 @@ describe('SwipeScreen', () => {
   it('should call setRating with no on left swipe (nope button)', async () => {
     render(<SwipeScreen />);
     
-    const buttons = screen.getAllByText(/NOPE/);
-    const nopeButton = buttons.find(btn => btn.tagName === 'BUTTON');
-    fireEvent.click(nopeButton!);
+    const nopeButton = screen.getByRole('button', { name: /NOPE/i });
+    fireEvent.click(nopeButton);
     
     await waitFor(() => {
       expect(mockSetRating).toHaveBeenCalledWith('give', expect.any(String), 'no');
@@ -107,9 +120,8 @@ describe('SwipeScreen', () => {
   it('should increment activity index after swipe', async () => {
     render(<SwipeScreen />);
     
-    const buttons = screen.getAllByText(/YES/);
-    const yesButton = buttons.find(btn => btn.tagName === 'BUTTON');
-    fireEvent.click(yesButton!);
+    const yesButton = screen.getByRole('button', { name: /YES/i });
+    fireEvent.click(yesButton);
     
     await waitFor(() => {
       expect(mockSetCurrentActivityIndex).toHaveBeenCalledWith(1);
@@ -132,9 +144,8 @@ describe('SwipeScreen', () => {
     
     render(<SwipeScreen />);
     
-    const buttons = screen.getAllByText(/YES/);
-    const yesButton = buttons.find(btn => btn.tagName === 'BUTTON');
-    fireEvent.click(yesButton!);
+    const yesButton = screen.getByRole('button', { name: /YES/i });
+    fireEvent.click(yesButton);
     
     await waitFor(() => {
       expect(screen.getByText(/Round Complete/i)).toBeInTheDocument();
@@ -157,9 +168,8 @@ describe('SwipeScreen', () => {
     
     render(<SwipeScreen />);
     
-    const buttons = screen.getAllByText(/YES/);
-    const yesButton = buttons.find(btn => btn.tagName === 'BUTTON');
-    fireEvent.click(yesButton!);
+    const yesButton = screen.getByRole('button', { name: /YES/i });
+    fireEvent.click(yesButton);
     
     await waitFor(() => {
       expect(screen.getByText(/Round Complete/i)).toBeInTheDocument();
@@ -241,9 +251,8 @@ describe('SwipeScreen', () => {
     
     render(<SwipeScreen />);
     
-    const buttons = screen.getAllByText(/YES/);
-    const yesButton = buttons.find(btn => btn.tagName === 'BUTTON');
-    fireEvent.click(yesButton!);
+    const yesButton = screen.getByRole('button', { name: /YES/i });
+    fireEvent.click(yesButton);
     
     expect(mockSetRating).toHaveBeenCalledWith('receive', expect.any(String), expect.any(String));
   });
