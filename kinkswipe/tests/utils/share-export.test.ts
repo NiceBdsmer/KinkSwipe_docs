@@ -27,9 +27,12 @@ describe('Share and Export Utils', () => {
     it('should generate a share link with encoded payload', () => {
       const userState = {
         ratings: { give: {}, receive: {} },
-        userMeta: { mode: 'give', experience: 'newbie', agreedToTerms: true },
-        lang: 'en',
-        version: '1.0'
+        userMeta: { mode: 'give' as const, experience: 'newbie' as const, agreedToTerms: true },
+        lang: 'en' as const,
+        customCategories: [],
+        currentScreen: 'summary' as const,
+        currentCategory: '',
+        currentActivityIndex: 0
       };
 
       const result = generateShareLink(userState);
@@ -43,9 +46,12 @@ describe('Share and Export Utils', () => {
 
       const userState = {
         ratings: { give: {}, receive: {} },
-        userMeta: { mode: 'give', experience: 'newbie', agreedToTerms: true },
-        lang: 'en',
-        version: '1.0'
+        userMeta: { mode: 'give' as const, experience: 'newbie' as const, agreedToTerms: true },
+        lang: 'en' as const,
+        customCategories: [],
+        currentScreen: 'summary' as const,
+        currentCategory: '',
+        currentActivityIndex: 0
       };
 
       const result = generateShareLink(userState);

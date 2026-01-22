@@ -27,7 +27,15 @@ export function SummaryScreen() {
 
   const handleCopyLink = async () => {
     try {
-      const link = generateShareLink({ ratings, userMeta, lang: 'en', version: '1.0' });
+      const link = generateShareLink({
+        ratings,
+        userMeta,
+        lang: 'en',
+        customCategories: [],
+        currentScreen: 'summary',
+        currentCategory: '',
+        currentActivityIndex: 0
+      });
 
       // Try native share API first (mobile)
       if (navigator.share) {

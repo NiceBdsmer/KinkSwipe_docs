@@ -2,6 +2,7 @@ import { Welcome } from './screens/Welcome';
 import { Onboarding } from './screens/Onboarding';
 import { SwipeScreen } from './screens/SwipeScreen';
 import { SummaryScreen } from './screens/SummaryScreen';
+import { LoadFromLink } from './screens/LoadFromLink';
 import { useAppStore } from './store/useAppStore';
 
 function App() {
@@ -17,8 +18,7 @@ function App() {
     case 'summary':
       return <SummaryScreen />;
     case 'load':
-      // TODO: Implement LoadFromLink screen in Phase D
-      return <div>Load from Link - Coming Soon</div>;
+      return <LoadFromLink />;
     default:
       return <Welcome />;
   }
