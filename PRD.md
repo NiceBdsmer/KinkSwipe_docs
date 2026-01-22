@@ -61,15 +61,15 @@ KinkSwipe es una web app **100% client-side, privacy-first** para explorar prefe
 - [x] Create src/components/SummaryCard.tsx displaying counts for YES/MAYBE/MEH/NOPE with colored badges
 
 ### Phase 4: Screens - Welcome and Onboarding
-- [ ] Create src/screens/Welcome.tsx with logo, tagline, Start Swiping button, Load Link button, and LanguageSwitcher
-- [ ] Create src/screens/Onboarding.tsx as multi-step wizard with 4 steps using local state
-- [ ] Build onboarding step 1: role selection with 3 cards - As Giver, As Receiver, Both (two rounds)
-- [ ] Build onboarding step 2: experience level with 3 options - Newbie, Curious, Experienced
-- [ ] Build onboarding step 3: safety disclaimer text with I Understand checkbox and continue button
-- [ ] Add navigation between steps with back button and progress dots indicator
-- [ ] On complete, save userMeta to store and navigate to SwipeScreen
+- [x] Create src/screens/Welcome.tsx with logo, tagline, Start Swiping button, Load Link button, and LanguageSwitcher
+- [x] Create src/screens/Onboarding.tsx as multi-step wizard with 4 steps using local state
+- [x] Build onboarding step 1: role selection with 3 cards - As Giver, As Receiver, Both (two rounds)
+- [x] Build onboarding step 2: experience level with 3 options - Newbie, Curious, Experienced
+- [x] Build onboarding step 3: safety disclaimer text with I Understand checkbox and continue button
+- [x] Add navigation between steps with back button and progress dots indicator
+- [x] On complete, save userMeta to store and navigate to SwipeScreen
 - [ ] Write unit tests for Welcome.tsx component
-- [ ] Write unit tests for Onboarding.tsx component
+- [x] Write unit tests for Onboarding.tsx component
 - [ ] Write E2E tests for complete onboarding flow (role selection → experience → safety → swipe screen)
 - [ ] Run tests and lint, then merge to master
 
