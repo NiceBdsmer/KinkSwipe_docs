@@ -4,24 +4,20 @@ import { categories } from '../data/categories';
 import { useAppStore } from '../store/useAppStore';
 import { useTranslation } from '../i18n/useTranslation';
 import { SummaryCard } from '../components/SummaryCard';
-import { CustomCategoryDialog } from '../components/CustomCategoryDialog';
 import { Button } from '../components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
-import { Users, UserRound, Link, FileText, Download, Plus, ArrowLeft, Pencil, Trash2 } from 'lucide-react';
+import { Users, UserRound, Link, FileText, Download, Plus, ArrowLeft } from 'lucide-react';
 import { generateShareLink } from '../utils/generateShareLink';
 import { exportText } from '../utils/exportText';
 import { exportImage } from '../utils/exportImage';
-import type { CustomCategory, ActivityDef, CustomActivity } from '../types';
+import { showToast } from '../utils/toast';
 
 type RatingMode = 'give' | 'receive';
 
 export function SummaryScreen() {
   const t = useTranslation();
-  const { ratings, userMeta, setScreen, customCategories, addCustomCategory, updateCustomCategory, deleteCustomCategory } = useAppStore();
+  const { ratings, userMeta, setScreen } = useAppStore();
   const summaryRef = useRef<HTMLDivElement>(null);
-  const [error, setError] = useState<string>('');
-  const [customDialogOpen, setCustomDialogOpen] = useState(false);
-  const [editingCategory, setEditingCategory] = useState<CustomCategory | undefined>(undefined);
 
   const [currentMode, setCurrentMode] = useState<RatingMode>(() => {
     if (userMeta.mode === 'both') return 'give';
@@ -32,7 +28,6 @@ export function SummaryScreen() {
 
   const handleCopyLink = async () => {
     try {
-      setError('');
       const link = generateShareLink({
         ratings,
         userMeta,
@@ -51,61 +46,43 @@ export function SummaryScreen() {
           url: link,
         });
       } else {
+        // Fallback to clipboard
         await navigator.clipboard.writeText(link);
       }
+      showToast.success('Share link copied to clipboard!');
     } catch (error) {
       console.error('Failed to share link:', error);
-      setError('Failed to share link. Please try again.');
+      showToast.error('Failed to share link. Please try again.');
     }
   };
 
   const handleCopyText = async () => {
     try {
-      setError('');
       const text = exportText(ratings);
       await navigator.clipboard.writeText(text);
+      showToast.success('Text summary copied to clipboard!');
     } catch (error) {
       console.error('Failed to copy text:', error);
-      setError('Failed to copy text to clipboard. Please try again.');
+      showToast.error('Failed to copy text to clipboard. Please try again.');
     }
   };
 
   const handleDownloadImage = async () => {
     if (!summaryRef.current) {
-      setError('Unable to generate image. Please refresh and try again.');
+      showToast.error('Unable to generate image. Please refresh and try again.');
       return;
     }
     try {
-      setError('');
       await exportImage(summaryRef.current);
+      showToast.success('Image downloaded successfully!');
     } catch (error) {
       console.error('Failed to download image:', error);
-      setError('Failed to download image. Please try again.');
+      showToast.error('Failed to download image. Please try again.');
     }
   };
 
   const handleAddCustom = () => {
-    setEditingCategory(undefined);
-    setCustomDialogOpen(true);
-  };
-
-  const handleEditCategory = (category: CustomCategory) => {
-    setEditingCategory(category);
-    setCustomDialogOpen(true);
-  };
-
-  const handleDeleteCategory = (id: string) => {
-    if (confirm('Are you sure you want to delete this category and all its activities?')) {
-      deleteCustomCategory(id);
-    }
-  };
-
-  const handleSaveCategory = (category: CustomCategory) => {
-    if (editingCategory) {
-      updateCustomCategory(editingCategory.id, category);
-    } else {
-      addCustomCategory(category);
-    }
+    showToast.info('Custom categories are not yet available. Coming soon!');
   };
 
   const currentRatings = ratings[currentMode as keyof typeof ratings];
@@ -124,21 +101,11 @@ export function SummaryScreen() {
       else if (rating === 'no') nope++;
     });
 
-    customCategories.forEach((cat) => {
-      cat.activities.forEach((activity) => {
-        const rating = currentRatings[activity.id];
-        if (rating === 'yes') yes++;
-        else if (rating === 'maybe') maybe++;
-        else if (rating === 'meh') meh++;
-        else if (rating === 'no') nope++;
-      });
-    });
-
     return { yes, maybe, meh, nope };
-  }, [currentRatings, customCategories]);
+  }, [currentRatings]);
 
   const categoryActivities = useMemo(() => {
-    const defaultCategories = categories.map((category) => {
+    return categories.map((category) => {
       const categoryActivitiesEn = activitiesEn.filter(
         (activity) => activity.categoryId === category.id
       );
@@ -161,46 +128,10 @@ export function SummaryScreen() {
         yesActivities,
         maybeActivities,
         mehActivities,
-        nopeActivities,
-        isCustom: false,
-        customCategory: undefined as CustomCategory | undefined
+        nopeActivities
       };
     });
-
-    const customCategoriesData = customCategories.map((customCat) => {
-      const yesActivities = customCat.activities.filter(
-        (activity) => currentRatings[activity.id] === 'yes'
-      );
-      const maybeActivities = customCat.activities.filter(
-        (activity) => currentRatings[activity.id] === 'maybe'
-      );
-      const mehActivities = customCat.activities.filter(
-        (activity) => currentRatings[activity.id] === 'meh'
-      );
-      const nopeActivities = customCat.activities.filter(
-        (activity) => currentRatings[activity.id] === 'no'
-      );
-
-      return {
-        category: { id: customCat.id, name: customCat.name },
-        yesActivities,
-        maybeActivities,
-        mehActivities,
-        nopeActivities,
-        isCustom: true,
-        customCategory: customCat
-      };
-    });
-
-    return [...defaultCategories, ...customCategoriesData];
-  }, [currentRatings, customCategories]);
-
-  const getActivityText = (activity: ActivityDef | CustomActivity) => {
-    if ('texts' in activity && activity.texts.en) {
-      return activity.texts.en.text;
-    }
-    return activity.text;
-  };
+  }, [currentRatings]);
 
   return (
     <div ref={summaryRef} className="min-h-screen bg-background flex flex-col items-center p-4 pb-20">
@@ -214,14 +145,6 @@ export function SummaryScreen() {
           Back to Start
         </Button>
       </div>
-
-      {error && (
-        <div className="w-full max-w-2xl mb-4">
-          <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-md">
-            <p className="text-sm">{error}</p>
-          </div>
-        </div>
-      )}
 
       <div className="w-full max-w-2xl space-y-6">
         {showToggle && (
@@ -255,35 +178,13 @@ export function SummaryScreen() {
         />
 
         <Accordion type="multiple" className="w-full">
-          {categoryActivities.map(({ category, yesActivities, maybeActivities, mehActivities, nopeActivities, isCustom, customCategory }) => (
+          {categoryActivities.map(({ category, yesActivities, maybeActivities, mehActivities, nopeActivities }) => (
             <AccordionItem key={category.id} value={category.id}>
               <AccordionTrigger className="capitalize">
-                {isCustom ? category.name : t.categories[category.id as keyof typeof t.categories]}
+                {t.categories[category.id as keyof typeof t.categories]}
               </AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-4">
-                  {isCustom && customCategory && (
-                    <div className="flex gap-2 justify-end">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleEditCategory(customCategory)}
-                        className="gap-2"
-                      >
-                        <Pencil className="w-4 h-4" />
-                        Edit
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleDeleteCategory(customCategory.id)}
-                        className="gap-2 text-destructive hover:text-destructive"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                        Delete
-                      </Button>
-                    </div>
-                  )}
                   {yesActivities.length > 0 && (
                     <div>
                       <div className="flex items-center gap-2 mb-2">
@@ -297,7 +198,7 @@ export function SummaryScreen() {
                       <ul className="text-sm space-y-1 pl-4">
                         {yesActivities.map((activity) => (
                           <li key={activity.id} className="text-foreground">
-                            {getActivityText(activity)}
+                            {activity.texts.en.text}
                           </li>
                         ))}
                       </ul>
@@ -316,7 +217,7 @@ export function SummaryScreen() {
                       <ul className="text-sm space-y-1 pl-4">
                         {maybeActivities.map((activity) => (
                           <li key={activity.id} className="text-foreground">
-                            {getActivityText(activity)}
+                            {activity.texts.en.text}
                           </li>
                         ))}
                       </ul>
@@ -335,7 +236,7 @@ export function SummaryScreen() {
                       <ul className="text-sm space-y-1 pl-4">
                         {mehActivities.map((activity) => (
                           <li key={activity.id} className="text-foreground">
-                            {getActivityText(activity)}
+                            {activity.texts.en.text}
                           </li>
                         ))}
                       </ul>
@@ -354,7 +255,7 @@ export function SummaryScreen() {
                       <ul className="text-sm space-y-1 pl-4">
                         {nopeActivities.map((activity) => (
                           <li key={activity.id} className="text-foreground">
-                            {getActivityText(activity)}
+                            {activity.texts.en.text}
                           </li>
                         ))}
                       </ul>
@@ -411,13 +312,6 @@ export function SummaryScreen() {
           <Plus className="w-5 h-5" />
         </Button>
       </div>
-
-      <CustomCategoryDialog
-        open={customDialogOpen}
-        onOpenChange={setCustomDialogOpen}
-        onSave={handleSaveCategory}
-        initialCategory={editingCategory}
-      />
     </div>
   );
 }
