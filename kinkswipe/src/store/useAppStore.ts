@@ -39,7 +39,7 @@ const getDefaultState = (): UserState => ({
     receive: {}
   },
   customCategories: [],
-  currentScreen: 'welcome',
+  currentScreen: 'start',
   currentCategory: categories[0]?.id ?? '',
   currentActivityIndex: 0,
   tutorialSeen: false

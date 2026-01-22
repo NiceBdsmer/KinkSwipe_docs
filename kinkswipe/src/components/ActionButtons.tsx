@@ -13,73 +13,42 @@ export function ActionButtons({ onNope, onSkip, onMaybe, onYes }: ActionButtonsP
   const t = useTranslation();
 
   return (
-    <div className="flex justify-center gap-1 sm:gap-3 px-2 sm:px-4 py-4 sm:py-6">
+    <div className="flex justify-center gap-4 sm:gap-6 px-2 py-5">
       <Button
-        variant="destructive"
-        size="lg"
-        className="flex-1 min-w-0 h-10 sm:h-12 text-xs sm:text-sm px-1 sm:px-3"
+        variant="ghost"
+        size="icon"
+        className="action-orb bg-gradient-to-br from-rose-500/80 to-rose-700/80 hover:scale-105"
         onClick={onNope}
         aria-label={t.swipe.nope}
       >
-        <X className="h-4 w-4 sm:h-5 sm:w-5" />
-        <span className="hidden sm:inline ml-1 sm:ml-2">{t.swipe.nope}</span>
+        <X className="h-5 w-5" />
       </Button>
       <Button
-        variant="secondary"
-        size="lg"
-        className="flex-1 min-w-0 h-10 sm:h-12 text-xs sm:text-sm px-1 sm:px-3"
+        variant="ghost"
+        size="icon"
+        className="action-orb bg-gradient-to-br from-slate-500/80 to-slate-700/80 hover:scale-105"
         onClick={onSkip}
         aria-label={t.swipe.skip}
       >
-        <Circle className="h-4 w-4 sm:h-5 sm:w-5" />
-        <span className="hidden sm:inline ml-1 sm:ml-2">{t.swipe.skip}</span>
+        <Circle className="h-5 w-5" />
       </Button>
       <Button
-        variant="default"
-        size="lg"
-        className="flex-1 min-w-0 h-10 sm:h-12 text-xs sm:text-sm bg-blue-600 hover:bg-blue-700 px-1 sm:px-3"
+        variant="ghost"
+        size="icon"
+        className="action-orb bg-gradient-to-br from-sky-500/80 to-blue-700/80 hover:scale-105"
         onClick={onMaybe}
         aria-label={t.swipe.maybe}
       >
-        <Zap className="h-4 w-4 sm:h-5 sm:w-5" />
-        <span className="hidden sm:inline ml-1 sm:ml-2">{t.swipe.maybe}</span>
+        <Zap className="h-5 w-5" />
       </Button>
       <Button
-        variant="default"
-        size="lg"
-        className="flex-1 min-w-0 h-10 sm:h-12 text-xs sm:text-sm bg-green-600 hover:bg-green-700 px-1 sm:px-3"
+        variant="ghost"
+        size="icon"
+        className="action-orb bg-gradient-to-br from-emerald-500/80 to-emerald-700/80 hover:scale-105"
         onClick={onYes}
         aria-label={t.swipe.yes}
       >
-        <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
-        <span className="hidden sm:inline ml-1 sm:ml-2">{t.swipe.yes}</span>
-      </Button>
-      <Button
-        variant="secondary"
-        size="lg"
-        className="flex-1 min-w-0 h-10 sm:h-12 text-xs sm:text-sm px-1 sm:px-3"
-        onClick={onSkip}
-      >
-        <Circle className="h-4 w-4 sm:h-5 sm:w-5" />
-        <span className="hidden sm:inline ml-1 sm:ml-2">{t.swipe.skip}</span>
-      </Button>
-      <Button
-        variant="default"
-        size="lg"
-        className="flex-1 min-w-0 h-10 sm:h-12 text-xs sm:text-sm bg-blue-600 hover:bg-blue-700 px-1 sm:px-3"
-        onClick={onMaybe}
-      >
-        <Zap className="h-4 w-4 sm:h-5 sm:w-5" />
-        <span className="hidden sm:inline ml-1 sm:ml-2">{t.swipe.maybe}</span>
-      </Button>
-      <Button
-        variant="default"
-        size="lg"
-        className="flex-1 min-w-0 h-10 sm:h-12 text-xs sm:text-sm bg-green-600 hover:bg-green-700 px-1 sm:px-3"
-        onClick={onYes}
-      >
-        <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
-        <span className="hidden sm:inline ml-1 sm:ml-2">{t.swipe.yes}</span>
+        <Heart className="h-5 w-5" />
       </Button>
     </div>
   );

@@ -18,16 +18,16 @@ export function Header({ onBack, extraActions }: HeaderProps) {
   const categoryName = category ? t.categories[category.id as keyof typeof t.categories] : '';
 
   return (
-    <div className="flex items-center justify-between px-3 sm:px-4 py-3 sm:py-4 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-background/70 backdrop-blur-xl">
       <div className="flex items-center gap-3">
         {onBack && (
-          <Button variant="ghost" size="icon" onClick={onBack} aria-label="Back" className="shrink-0">
+          <Button variant="ghost" size="icon" onClick={onBack} aria-label="Back" className="shrink-0 text-muted-foreground hover:text-foreground">
             <ArrowLeft className="h-5 w-5" />
           </Button>
         )}
         <div className="min-w-0">
-          <h1 className="text-lg sm:text-xl font-semibold truncate max-w-[180px] sm:max-w-none">{categoryName}</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-lg sm:text-xl font-display truncate max-w-[180px] sm:max-w-none">{categoryName}</h1>
+          <p className="text-xs text-muted-foreground">
             Activity {currentActivityIndex + 1}
           </p>
         </div>

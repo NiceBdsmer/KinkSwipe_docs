@@ -14,7 +14,7 @@ export function SummaryCard({ yesCount, maybeCount, skipCount, nopeCount }: Summ
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t.summary.title}</CardTitle>
+        <CardTitle className="font-display">{t.summary.title}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-3">

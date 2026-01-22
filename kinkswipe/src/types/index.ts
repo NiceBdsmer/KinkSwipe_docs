@@ -60,7 +60,7 @@ export interface UserState {
   };
   customCategories: CustomCategory[];
   // UI State for persistence
-  currentScreen: 'welcome' | 'onboarding' | 'category-selection' | 'swipe' | 'summary' | 'load';
+  currentScreen: 'start' | 'welcome' | 'onboarding' | 'category-selection' | 'swipe' | 'summary' | 'load';
   currentCategory: string;
   currentActivityIndex: number;
   tutorialSeen: boolean;

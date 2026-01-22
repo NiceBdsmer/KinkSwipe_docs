@@ -134,12 +134,12 @@ export function SummaryScreen() {
   }, [currentRatings]);
 
   return (
-    <div ref={summaryRef} className="min-h-screen bg-background flex flex-col items-center p-4 pb-20">
+    <div ref={summaryRef} className="min-h-screen flex flex-col items-center p-4 pb-24 app-shell">
       <div className="w-full max-w-2xl mb-4">
         <Button
           variant="ghost"
-          onClick={() => setScreen('welcome')}
-          className="flex items-center gap-2"
+          onClick={() => setScreen('start')}
+          className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Start
@@ -148,12 +148,12 @@ export function SummaryScreen() {
 
       <div className="w-full max-w-2xl space-y-6">
         {showToggle && (
-          <div className="flex gap-2 bg-muted p-1 rounded-lg">
+          <div className="flex gap-2 bg-white/5 p-1 rounded-full border border-white/10">
             <Button
               variant={currentMode === 'give' ? 'default' : 'ghost'}
               size="sm"
               onClick={() => setCurrentMode('give')}
-              className="flex-1 gap-2"
+              className="flex-1 gap-2 rounded-full"
             >
               <UserRound className="w-4 h-4" />
               {t.summary.give}
@@ -162,7 +162,7 @@ export function SummaryScreen() {
               variant={currentMode === 'receive' ? 'default' : 'ghost'}
               size="sm"
               onClick={() => setCurrentMode('receive')}
-              className="flex-1 gap-2"
+              className="flex-1 gap-2 rounded-full"
             >
               <Users className="w-4 h-4" />
               {t.summary.receive}
@@ -276,36 +276,36 @@ export function SummaryScreen() {
 
       <div className="fixed bottom-4 right-4 flex flex-col gap-2">
         <Button
-          variant="default"
+          variant="ghost"
           size="icon"
-          className="rounded-full shadow-lg"
+          className="action-orb bg-gradient-to-br from-sky-500/80 to-blue-700/80"
           onClick={handleCopyLink}
           title="Copy share link"
         >
           <Link className="w-5 h-5" />
         </Button>
         <Button
-          variant="default"
+          variant="ghost"
           size="icon"
-          className="rounded-full shadow-lg"
+          className="action-orb bg-gradient-to-br from-emerald-500/80 to-emerald-700/80"
           onClick={handleCopyText}
           title="Copy text summary"
         >
           <FileText className="w-5 h-5" />
         </Button>
         <Button
-          variant="default"
+          variant="ghost"
           size="icon"
-          className="rounded-full shadow-lg"
+          className="action-orb bg-gradient-to-br from-orange-500/80 to-amber-600/80"
           onClick={handleDownloadImage}
           title="Download image"
         >
           <Download className="w-5 h-5" />
         </Button>
         <Button
-          variant="default"
+          variant="ghost"
           size="icon"
-          className="rounded-full shadow-lg"
+          className="action-orb bg-gradient-to-br from-rose-500/80 to-rose-700/80"
           onClick={handleAddCustom}
           title="Add custom"
         >

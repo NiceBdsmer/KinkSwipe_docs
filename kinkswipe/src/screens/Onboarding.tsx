@@ -60,8 +60,8 @@ export function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col safe-area-inset pb-20">
-      <div className="flex-1 flex flex-col items-center justify-center p-3 sm:p-4 w-full">
+    <div className="min-h-screen flex flex-col safe-area-inset pb-20 app-shell">
+      <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 w-full">
         <div className="w-full max-w-lg sm:max-w-md">
           <div className="mb-8">
             <div className="flex justify-center gap-2 mb-4">
@@ -70,10 +70,10 @@ export function Onboarding() {
                   key={step}
                   className={`w-2.5 h-2.5 rounded-full transition-colors ${
                     index === currentStepIndex
-                      ? 'bg-primary'
+                      ? 'bg-gradient-to-r from-sky-400 to-cyan-400'
                       : index < currentStepIndex
                       ? 'bg-primary/50'
-                      : 'bg-muted'
+                      : 'bg-white/10'
                   }`}
                 />
               ))}
@@ -82,7 +82,7 @@ export function Onboarding() {
 
           {currentStep === 'role' && (
             <div className="space-y-4">
-              <h2 className="text-xl sm:text-2xl font-bold text-center">{t.onboarding.roleTitle}</h2>
+              <h2 className="text-xl sm:text-2xl font-display text-center">{t.onboarding.roleTitle}</h2>
               <div className="grid gap-3">
                 {[
                   { value: 'give', label: t.onboarding.roleGiver },
@@ -93,7 +93,7 @@ export function Onboarding() {
                     key={option.value}
                     className={`cursor-pointer transition-all ${
                       selectedRole === option.value
-                        ? 'border-primary ring-2 ring-primary ring-offset-2'
+                        ? 'border-primary ring-2 ring-primary/60 ring-offset-2 ring-offset-transparent'
                         : 'hover:border-primary/50'
                     }`}
                     onClick={() => setSelectedRole(option.value as 'give' | 'receive' | 'both')}
@@ -109,7 +109,7 @@ export function Onboarding() {
 
           {currentStep === 'experience' && (
             <div className="space-y-4">
-              <h2 className="text-xl sm:text-2xl font-bold text-center">{t.onboarding.experienceTitle}</h2>
+              <h2 className="text-xl sm:text-2xl font-display text-center">{t.onboarding.experienceTitle}</h2>
               <div className="grid gap-3">
                 {[
                   { value: 'newbie', label: t.onboarding.experienceNewbie },
@@ -120,7 +120,7 @@ export function Onboarding() {
                     key={option.value}
                     className={`cursor-pointer transition-all ${
                       selectedExperience === option.value
-                        ? 'border-primary ring-2 ring-primary ring-offset-2'
+                        ? 'border-primary ring-2 ring-primary/60 ring-offset-2 ring-offset-transparent'
                         : 'hover:border-primary/50'
                     }`}
                     onClick={() => setSelectedExperience(option.value as 'newbie' | 'curious' | 'experienced')}
@@ -137,7 +137,7 @@ export function Onboarding() {
           {currentStep === 'safety' && (
             <Card>
               <CardHeader className="pb-3 sm:pb-6">
-                <CardTitle className="text-xl sm:text-2xl">{t.onboarding.safetyTitle}</CardTitle>
+                <CardTitle className="text-xl sm:text-2xl font-display">{t.onboarding.safetyTitle}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 p-3 sm:p-6">
                 <p className="text-xs sm:text-sm text-muted-foreground">{t.onboarding.safetyText}</p>
@@ -159,13 +159,13 @@ export function Onboarding() {
           )}
 
           <div className="flex gap-3 mt-8">
-            <Button variant="outline" onClick={handleBack} className="flex-1">
+            <Button variant="outline" onClick={handleBack} className="flex-1 rounded-full">
               {t.onboarding.back}
             </Button>
             <Button
               onClick={handleNext}
               disabled={!canProceed()}
-              className="flex-1"
+              className="flex-1 rounded-full"
             >
               {t.onboarding.continue}
               <ChevronRight className="w-4 h-4 ml-1" />

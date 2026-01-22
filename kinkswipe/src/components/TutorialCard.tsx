@@ -27,52 +27,50 @@ export function TutorialCard({ onSwipe }: TutorialCardProps) {
       }}
       onSwipe={() => {}} // Disable this callback, use onCardLeftScreen instead
     >
-      <Card className="absolute inset-0 shadow-xl">
+      <Card className="absolute inset-0 neon-frame">
         <CardHeader>
           <div className="flex items-center justify-center">
-            <span className="text-xs font-medium text-muted-foreground">
-              {t.tutorial.title}
-            </span>
+            <span className="soft-pill">{t.tutorial.title}</span>
           </div>
         </CardHeader>
-        <CardContent className="flex flex-col items-center justify-center h-full gap-6 pt-6">
-          <h2 className="text-2xl font-bold text-center">
+        <CardContent className="flex flex-col items-center justify-center h-full gap-6 pt-6 px-6 pb-10">
+          <h2 className="text-2xl sm:text-3xl font-display text-center">
             {t.tutorial.heading}
           </h2>
-          <p className="text-center text-muted-foreground max-w-md">
+          <p className="text-center text-muted-foreground max-w-md text-sm sm:text-base">
             {t.tutorial.description}
           </p>
           
           <div className="grid grid-cols-2 gap-6 mt-4">
             <div className={`flex flex-col items-center gap-2 transition-all ${activeDirection === 'right' ? 'scale-110' : ''}`}>
-              <div className="relative w-16 h-16 flex items-center justify-center bg-green-100 dark:bg-green-900 rounded-full">
-                <ArrowRightCircle className={`w-10 h-10 text-green-600 dark:text-green-400 ${activeDirection === 'right' ? 'animate-pulse' : ''}`} />
+              <div className="relative w-16 h-16 flex items-center justify-center bg-emerald-500/20 rounded-full">
+                <ArrowRightCircle className={`w-10 h-10 text-emerald-300 ${activeDirection === 'right' ? 'animate-pulse' : ''}`} />
               </div>
-              <span className="text-sm font-semibold text-green-600 dark:text-green-400">{t.swipe.yes}</span>
+              <span className="text-sm font-semibold text-emerald-300">{t.swipe.yes}</span>
               <span className="text-xs text-muted-foreground">{t.tutorial.swipeRight}</span>
             </div>
 
             <div className={`flex flex-col items-center gap-2 transition-all ${activeDirection === 'up' ? 'scale-110' : ''}`}>
-              <div className="relative w-16 h-16 flex items-center justify-center bg-blue-100 dark:bg-blue-900 rounded-full">
-                <ArrowUpCircle className={`w-10 h-10 text-blue-600 dark:text-blue-400 ${activeDirection === 'up' ? 'animate-pulse' : ''}`} />
+              <div className="relative w-16 h-16 flex items-center justify-center bg-sky-500/20 rounded-full">
+                <ArrowUpCircle className={`w-10 h-10 text-sky-300 ${activeDirection === 'up' ? 'animate-pulse' : ''}`} />
               </div>
-              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">{t.swipe.maybe}</span>
+              <span className="text-sm font-semibold text-sky-300">{t.swipe.maybe}</span>
               <span className="text-xs text-muted-foreground">{t.tutorial.swipeUp}</span>
             </div>
 
             <div className={`flex flex-col items-center gap-2 transition-all ${activeDirection === 'down' ? 'scale-110' : ''}`}>
-              <div className="relative w-16 h-16 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-full">
-                <ArrowDownCircle className={`w-10 h-10 text-gray-600 dark:text-gray-400 ${activeDirection === 'down' ? 'animate-pulse' : ''}`} />
+              <div className="relative w-16 h-16 flex items-center justify-center bg-slate-500/20 rounded-full">
+                <ArrowDownCircle className={`w-10 h-10 text-slate-300 ${activeDirection === 'down' ? 'animate-pulse' : ''}`} />
               </div>
-               <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">{t.swipe.skip}</span>
+               <span className="text-sm font-semibold text-slate-300">{t.swipe.skip}</span>
               <span className="text-xs text-muted-foreground">{t.tutorial.swipeDown}</span>
             </div>
 
             <div className={`flex flex-col items-center gap-2 transition-all ${activeDirection === 'left' ? 'scale-110' : ''}`}>
-              <div className="relative w-16 h-16 flex items-center justify-center bg-red-100 dark:bg-red-900 rounded-full">
-                <ArrowLeftCircle className={`w-10 h-10 text-red-600 dark:text-red-400 ${activeDirection === 'left' ? 'animate-pulse' : ''}`} />
+              <div className="relative w-16 h-16 flex items-center justify-center bg-rose-500/20 rounded-full">
+                <ArrowLeftCircle className={`w-10 h-10 text-rose-300 ${activeDirection === 'left' ? 'animate-pulse' : ''}`} />
               </div>
-              <span className="text-sm font-semibold text-red-600 dark:text-red-400">{t.swipe.nope}</span>
+              <span className="text-sm font-semibold text-rose-300">{t.swipe.nope}</span>
               <span className="text-xs text-muted-foreground">{t.tutorial.swipeLeft}</span>
             </div>
           </div>

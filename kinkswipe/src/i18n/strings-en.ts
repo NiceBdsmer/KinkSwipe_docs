@@ -2,9 +2,26 @@ export const stringsEn = {
   welcome: {
     title: 'KinkSwipe',
     tagline: 'Discover your preferences together',
+    subtitle: 'Choose where to begin or jump back into your saved progress.',
     startSwiping: 'Start Swiping',
     selectCategories: 'Select Categories',
     loadLink: 'Load Link'
+  },
+  start: {
+    badge: 'DISCOVER',
+    title: 'KinkSwipe',
+    subtitle: 'A private, guided way to explore intimacy, boundaries, and curiosity together. Swipe through activities, share results, and keep the conversation safe and clear.',
+    primaryCta: 'Begin the Assessment',
+    secondaryCta: 'Explore the Menu',
+    tertiaryCta: 'Load a Share Link',
+    cards: {
+      safeTitle: 'Consent-first flow',
+      safeText: 'Built-in safety prompts keep boundaries and comfort centered as you explore.',
+      discoverTitle: 'Curated discovery',
+      discoverText: 'Explore activity packs organized by theme so you can pace yourself.',
+      shareTitle: 'Shareable results',
+      shareText: 'Generate a link or summary to compare preferences whenever you want.'
+    }
   },
   onboarding: {
     roleTitle: 'How do you want to explore?',

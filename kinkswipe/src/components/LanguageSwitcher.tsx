@@ -20,6 +20,7 @@ export function LanguageSwitcher() {
           variant={lang === language.code ? 'default' : 'outline'}
           size="sm"
           onClick={() => setLang(language.code)}
+          className="rounded-full"
         >
           {language.label}
         </Button>

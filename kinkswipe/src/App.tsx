@@ -4,6 +4,7 @@ import { FooterNavigation } from './components/FooterNavigation';
 import { useAppStore } from './store/useAppStore';
 
 // Lazy load heavy screens
+const Start = lazy(() => import('./screens/Start').then(module => ({ default: module.Start })));
 const Welcome = lazy(() => import('./screens/Welcome').then(module => ({ default: module.Welcome })));
 const Onboarding = lazy(() => import('./screens/Onboarding').then(module => ({ default: module.Onboarding })));
 const CategorySelection = lazy(() => import('./screens/CategorySelection').then(module => ({ default: module.CategorySelection })));
@@ -16,6 +17,8 @@ function App() {
 
   const renderScreen = () => {
     switch (currentScreen) {
+      case 'start':
+        return <Start />;
       case 'welcome':
         return <Welcome />;
       case 'onboarding':
@@ -36,7 +39,7 @@ function App() {
   return (
     <>
       <Suspense fallback={
-        <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center app-shell">
           <div className="flex flex-col items-center gap-4">
             <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
             <p className="text-muted-foreground">Loading...</p>

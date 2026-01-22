@@ -98,7 +98,7 @@ export function SwipeScreen() {
       const categoryPercent = (categoryProgress.current / categoryProgress.total) * 100;
       
       return (
-    <div className="min-h-screen bg-background flex flex-col safe-area-inset pb-20">
+    <div className="min-h-screen flex flex-col safe-area-inset pb-20 app-shell">
       <Header
         onBack={() => setScreen('welcome')}
         extraActions={
@@ -106,26 +106,23 @@ export function SwipeScreen() {
             variant="ghost"
             size="sm"
             onClick={() => setScreen('category-selection')}
-            className="text-muted-foreground hover:text-primary"
+            className="text-muted-foreground hover:text-foreground"
           >
             <Grid3X3 className="w-4 h-4" />
           </Button>
         }
       />
 
-           <div className="flex-1 flex flex-col px-3 sm:px-4 py-2 max-w-lg sm:max-w-md mx-auto w-full">
-            <div className="px-4 pb-2">
-              <Progress value={categoryPercent} className="h-2" />
-              <p className="text-xs text-muted-foreground mt-1 text-center">
-                {categoryProgress.current} / {categoryProgress.total}
-              </p>
-            </div>
-            
-            <div className="text-xs text-center text-muted-foreground mb-2">
-              {totalProgress.current} / {totalProgress.total} total
+           <div className="flex-1 flex flex-col px-4 sm:px-6 py-4 max-w-lg mx-auto w-full">
+            <div className="px-1 pb-3">
+              <Progress value={categoryPercent} className="h-1.5" />
+              <div className="mt-2 flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                <span>{categoryProgress.current} / {categoryProgress.total}</span>
+                <span>{totalProgress.current} / {totalProgress.total} total</span>
+              </div>
             </div>
         
-        <div className="flex-1 relative min-h-[300px] sm:min-h-[400px]">
+        <div className="flex-1 relative min-h-[320px] sm:min-h-[420px]">
           {showTutorial ? (
             <TutorialCard
               key="tutorial"
@@ -155,7 +152,7 @@ export function SwipeScreen() {
 
             <Button
               variant="ghost"
-              className="mt-2 text-sm"
+              className="mt-1 text-xs uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground"
               onClick={handleSkipCategory}
             >
               {t.swipe.skipCategory}

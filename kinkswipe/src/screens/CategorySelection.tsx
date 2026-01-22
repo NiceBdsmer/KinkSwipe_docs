@@ -83,20 +83,20 @@ export function CategorySelection() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col safe-area-inset pb-20">
-      <div className="flex-1 px-4 py-4 sm:py-6 max-w-6xl mx-auto w-full lg:max-w-5xl xl:max-w-4xl 2xl:max-w-3xl">
+    <div className="min-h-screen flex flex-col safe-area-inset pb-20 app-shell">
+      <div className="flex-1 px-4 py-6 max-w-6xl mx-auto w-full lg:max-w-5xl xl:max-w-4xl 2xl:max-w-3xl">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">{t.categorySelection?.title || 'Choose Your Path'}</h1>
-          <p className="text-muted-foreground mb-4">
+          <h1 className="text-3xl font-display mb-2">{t.categorySelection?.title || 'Choose Your Path'}</h1>
+          <p className="text-muted-foreground mb-4 text-sm sm:text-base">
             {t.categorySelection?.subtitle || 'Select a category to begin exploring activities'}
           </p>
           
           <div className="max-w-md mx-auto">
-            <div className="flex justify-between text-sm text-muted-foreground mb-2">
+            <div className="flex justify-between text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">
               <span>{t.categorySelection?.overallProgress || 'Overall Progress'}</span>
               <span>{Math.round(getTotalProgress())}%</span>
             </div>
-            <Progress value={getTotalProgress()} className="h-3" />
+            <Progress value={getTotalProgress()} className="h-2" />
           </div>
         </div>
 
@@ -111,18 +111,18 @@ export function CategorySelection() {
                 key={category.id}
                 className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
                   selectedCategory === category.id
-                    ? 'ring-2 ring-primary ring-offset-2'
+                    ? 'ring-2 ring-primary/60 ring-offset-2 ring-offset-transparent'
                     : 'hover:border-primary/50'
                 } ${info.isLocked ? 'opacity-60 cursor-not-allowed' : ''}`}
                 onClick={() => !info.isLocked && setSelectedCategory(category.id)}
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">{title}</CardTitle>
+                    <CardTitle className="text-lg font-display">{title}</CardTitle>
                     {info.isLocked ? (
                       <Lock className="w-4 h-4 text-muted-foreground" />
                     ) : info.isCompleted ? (
-                      <div className="w-4 h-4 rounded-full bg-success" />
+                      <div className="w-4 h-4 rounded-full bg-success shadow-[0_0_12px_rgba(40,200,160,0.6)]" />
                     ) : null}
                   </div>
                 </CardHeader>
@@ -132,7 +132,7 @@ export function CategorySelection() {
                   </p>
                   
                   <div className="space-y-2">
-                  <div className="flex justify-between text-xs sm:text-sm">
+                  <div className="flex justify-between text-[11px] uppercase tracking-[0.2em]">
                     <span className="text-muted-foreground">
                       {info.activities} {t.categorySelection?.activities || 'activities'}
                     </span>
@@ -150,7 +150,7 @@ export function CategorySelection() {
                   </div>
                   
                   <Button
-                    className="w-full h-8 sm:h-9 text-xs sm:text-sm"
+                    className="w-full h-8 sm:h-9 text-xs sm:text-sm rounded-full"
                     variant={info.isCompleted ? "secondary" : "default"}
                     size="sm"
                     onClick={(e) => {
@@ -179,7 +179,7 @@ export function CategorySelection() {
             <Button
               variant="outline"
               onClick={() => setScreen('welcome')}
-              className="flex-1"
+              className="flex-1 rounded-full"
             >
               {t.categorySelection?.back || 'Back to Menu'}
             </Button>
@@ -187,7 +187,7 @@ export function CategorySelection() {
             <Button
               variant="destructive"
               onClick={() => setShowResetDialog(true)}
-              className="flex-1"
+              className="flex-1 rounded-full"
             >
               <RotateCcw className="w-4 h-4 mr-2" />
               {t.categorySelection?.resetProgress || 'Reset'}

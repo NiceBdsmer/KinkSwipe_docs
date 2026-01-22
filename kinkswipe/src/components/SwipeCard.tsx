@@ -18,6 +18,7 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
   const t = useTranslation();
   const { lang } = useAppStore();
   const activityText = getActivityText(activity, lang);
+  const categoryLabel = t.categories?.[activity.categoryId as keyof typeof t.categories] ?? activity.categoryId;
   const [activeDirection, setActiveDirection] = useState<string | null>(null);
 
   return (
@@ -38,12 +39,10 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
       }}
       onSwipe={() => {}} // Disable this callback, use onCardLeftScreen instead
     >
-      <Card className="absolute inset-0 shadow-xl">
+      <Card className="absolute inset-0 neon-frame">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground">
-              {activity.categoryId}
-            </span>
+            <span className="soft-pill">{categoryLabel}</span>
             {isEdge && (
               <TooltipProvider>
                 <Tooltip>
@@ -61,11 +60,11 @@ export function SwipeCard({ activity, onSwipe }: SwipeCardProps) {
             )}
           </div>
         </CardHeader>
-        <CardContent className="flex flex-col items-center justify-center h-full gap-4 pt-6">
-          <h2 className="text-3xl font-bold text-center">
+        <CardContent className="flex flex-col items-center justify-center h-full gap-4 pt-6 px-6 pb-10">
+          <h2 className="text-3xl sm:text-4xl font-display text-center">
             {activityText.text}
           </h2>
-          <p className="text-center text-muted-foreground max-w-md">
+          <p className="text-center text-muted-foreground max-w-md text-sm sm:text-base">
             {activityText.desc}
           </p>
         </CardContent>

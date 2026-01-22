@@ -70,11 +70,11 @@ export function LoadFromLink() {
 
   if (loadState === 'loaded' && loadedData) {
     return (
-      <div className="min-h-screen bg-background pb-20">
+      <div className="min-h-screen pb-20 app-shell">
         <div className="container mx-auto p-4">
           <Card className="mb-6">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 font-display">
                 <CheckCircle className="w-5 h-5 text-green-600" />
                 Loaded Someone's Results
               </CardTitle>
@@ -99,11 +99,11 @@ export function LoadFromLink() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 pb-20">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 pb-20 app-shell">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-4">
-          <h1 className="text-3xl font-bold">Load Results</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-3xl font-display">Load Results</h1>
+          <p className="text-muted-foreground text-sm">
             Paste a KinkSwipe share link to view someone's results
           </p>
         </div>
@@ -116,7 +116,7 @@ export function LoadFromLink() {
             <div className="space-y-2">
               <input
                 type="url"
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex h-12 w-full rounded-full border border-white/15 bg-white/5 px-4 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 placeholder="https://kinkswipe.app/?d=..."
                 value={inputUrl}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputUrl(e.target.value)}
@@ -134,7 +134,7 @@ export function LoadFromLink() {
             <Button
               onClick={handleLoadFromUrl}
               disabled={!inputUrl.trim() || loadState === 'loading'}
-              className="w-full"
+              className="w-full rounded-full"
             >
               {loadState === 'loading' ? 'Loading...' : 'Load Results'}
             </Button>
@@ -142,8 +142,8 @@ export function LoadFromLink() {
         </Card>
 
         <div className="text-center">
-          <Button variant="outline" onClick={() => setScreen('welcome')}>
-            Back to Welcome
+          <Button variant="outline" className="rounded-full" onClick={() => setScreen('start')}>
+            Back to Start
           </Button>
         </div>
       </div>
