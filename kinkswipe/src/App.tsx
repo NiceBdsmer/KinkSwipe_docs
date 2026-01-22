@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Welcome } from './screens/Welcome';
+import { Onboarding } from './screens/Onboarding';
+import { SwipeScreen } from './screens/SwipeScreen';
+import { SummaryScreen } from './screens/SummaryScreen';
+import { useAppStore } from './store/useAppStore';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const currentScreen = useAppStore((state) => state.currentScreen);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  switch (currentScreen) {
+    case 'welcome':
+      return <Welcome />;
+    case 'onboarding':
+      return <Onboarding />;
+    case 'swipe':
+      return <SwipeScreen />;
+    case 'summary':
+      return <SummaryScreen />;
+    case 'load':
+      // TODO: Implement LoadFromLink screen in Phase D
+      return <div>Load from Link - Coming Soon</div>;
+    default:
+      return <Welcome />;
+  }
 }
 
-export default App
+export default App;
