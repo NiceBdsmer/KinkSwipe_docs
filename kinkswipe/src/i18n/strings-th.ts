@@ -5,6 +5,7 @@ export const stringsTh: Strings = {
     title: 'KinkSwipe',
     tagline: 'ค้นพบความชอบของคุณด้วยกัน',
     startSwiping: 'เริ่มการเลื่อน',
+    selectCategories: 'เลือกหมวดหมู่',
     loadLink: 'โหลดลิงก์'
   },
   onboarding: {
@@ -54,15 +55,34 @@ export const stringsTh: Strings = {
     warning: 'กิจกรรมเสี่ยงสูง',
     info: 'กิจกรรมนี้มีความเสี่ยงต่อร่างกายและจิตใจอย่างมาก ต้องใช้ความรู้ ทักษะความปลอดภัย และการสื่อสารที่เหมาะสม'
   },
+  categorySelection: {
+    title: 'เลือกเส้นทางของคุณ',
+    subtitle: 'เลือกหมวดหมู่เพื่อเริ่มสำรวจกิจกรรม',
+    overallProgress: 'ความคืบหน้าโดยรวม',
+    activities: 'กิจกรรม',
+    completed: 'เสร็จสิ้น',
+    start: 'เริ่ม',
+    review: 'ตรวจสอบ',
+    back: 'กลับไปเมนู'
+  },
   categories: {
     basics: 'พื้นฐาน',
+    basicsDesc: 'หลักการพื้นฐานและแนวทางความปลอดภัย',
     bondage: 'การผูกมัด',
+    bondageDesc: 'เทคนิคการจำกัดและการผูกมัด',
     impact: 'การกระทบ',
+    impactDesc: 'การตีและกิจกรรมกระทบ',
     sensory: 'การรับรู้',
+    sensoryDesc: 'การสำรวจความรู้สึกและการขาดการรับรู้',
     'power-exchange': 'การแลกเปลี่ยนอำนาจ',
+    'power-exchangeDesc': 'การครอบงำ การยอมจำนน และพลังอำนาจ',
     edge: 'ขอบเขต',
+    edgeDesc: 'กิจกรรมขั้นสูงและความเข้มสูง',
     sexual: 'ทางเพศ',
+    sexualDesc: 'กิจกรรมทางเพศและการเล่นสนิท',
     fetishes: 'ความหลงใหล',
-    humiliation: 'การดูถูก'
+    fetishesDesc: 'ความหลงใหลเฉพาะและความสนใจพิเศษ',
+    humiliation: 'การดูถูก',
+    humiliationDesc: 'การเล่นการดูถูกและการลดทอนศักดิ์ศรี'
   }
 };

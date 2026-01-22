@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Button } from '../components/ui/button';
 import { useTranslation } from '../i18n/useTranslation';
 import type { RatingValue } from '../types';
+import { Grid3X3 } from 'lucide-react';
 
 export function SwipeScreen() {
   const t = useTranslation();
@@ -90,8 +91,20 @@ export function SwipeScreen() {
       const categoryPercent = (categoryProgress.current / categoryProgress.total) * 100;
       
       return (
-        <div className="min-h-screen bg-background flex flex-col">
-          <Header onBack={() => setScreen('welcome')} />
+    <div className="min-h-screen bg-background flex flex-col">
+      <Header 
+        onBack={() => setScreen('welcome')}
+        extraActions={
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setScreen('category-selection')}
+            className="text-muted-foreground hover:text-primary"
+          >
+            <Grid3X3 className="w-4 h-4" />
+          </Button>
+        }
+      />
           
           <div className="flex-1 flex flex-col px-4 py-2 max-w-md mx-auto w-full">
             <div className="px-4 pb-2">

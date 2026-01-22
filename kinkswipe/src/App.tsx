@@ -1,5 +1,6 @@
 import { Welcome } from './screens/Welcome';
 import { Onboarding } from './screens/Onboarding';
+import { CategorySelection } from './screens/CategorySelection';
 import { SwipeScreen } from './screens/SwipeScreen';
 import { SummaryScreen } from './screens/SummaryScreen';
 import { LoadFromLink } from './screens/LoadFromLink';
@@ -13,6 +14,8 @@ function App() {
       return <Welcome />;
     case 'onboarding':
       return <Onboarding />;
+    case 'category-selection':
+      return <CategorySelection />;
     case 'swipe':
       return <SwipeScreen />;
     case 'summary':

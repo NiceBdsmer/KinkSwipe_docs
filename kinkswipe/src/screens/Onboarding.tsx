@@ -41,7 +41,7 @@ export function Onboarding() {
         experience: selectedExperience!,
         agreedToTerms: safetyAgreed
       });
-      setScreen('swipe');
+      setScreen('category-selection');
       return;
     }
 

@@ -28,6 +28,14 @@ export function Welcome() {
             {t.welcome.startSwiping}
           </Button>
           <Button
+            onClick={() => setScreen('category-selection')}
+            variant="secondary"
+            size="lg"
+            className="w-full text-lg py-6"
+          >
+            {t.welcome.selectCategories || 'Select Categories'}
+          </Button>
+          <Button
             onClick={() => setScreen('load')}
             variant="outline"
             size="lg"

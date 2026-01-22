@@ -5,6 +5,7 @@ export const stringsEs: Strings = {
     title: 'KinkSwipe',
     tagline: 'Descubre tus preferencias juntos',
     startSwiping: 'Empezar a Deslizar',
+    selectCategories: 'Seleccionar Categorías',
     loadLink: 'Cargar Enlace'
   },
   onboarding: {
@@ -54,15 +55,34 @@ export const stringsEs: Strings = {
     warning: 'Actividad de Alto Riesgo',
     info: 'Esta actividad conlleva riesgos físicos o emocionales significativos. Requiere conocimiento adecuado, medidas de seguridad y comunicación.'
   },
+  categorySelection: {
+    title: 'Elige Tu Camino',
+    subtitle: 'Selecciona una categoría para comenzar a explorar actividades',
+    overallProgress: 'Progreso General',
+    activities: 'actividades',
+    completed: 'completadas',
+    start: 'Empezar',
+    review: 'Revisar',
+    back: 'Volver al Menú'
+  },
   categories: {
     basics: 'Básicos',
+    basicsDesc: 'Fundamentos esenciales y prácticas de seguridad',
     bondage: 'Bondage',
+    bondageDesc: 'Técnicas de restricción y atadura',
     impact: 'Impacto',
+    impactDesc: 'Azotes, flogging y juegos de impacto',
     sensory: 'Sensorial',
+    sensoryDesc: 'Exploración de sensaciones y privación sensorial',
     'power-exchange': 'Intercambio de Poder',
+    'power-exchangeDesc': 'Dominación, sumisión y dinámicas de poder',
     edge: 'Juego de Riesgo',
+    edgeDesc: 'Actividades avanzadas y de alta intensidad',
     sexual: 'Sexual',
+    sexualDesc: 'Actividades sexuales y juego íntimo',
     fetishes: 'Fetiches',
-    humiliation: 'Humillación'
+    fetishesDesc: 'Fetiches específicos e intereses especializados',
+    humiliation: 'Humillación',
+    humiliationDesc: 'Juego de humillación y degradación'
   }
 };
